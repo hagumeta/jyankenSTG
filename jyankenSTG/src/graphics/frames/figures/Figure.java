@@ -1,6 +1,7 @@
 package graphics.frames.figures;
 import java.awt.Graphics;
 
+import graphics.Global;
 import graphics.Vector2;
 import graphics.frames.figures.shapes.Shape;
 /*
@@ -13,7 +14,29 @@ public class Figure {
 	public boolean visible = true;//可視性
 
 
-	/*コンストラクタ*/
+	//////-----------------*staticメソッド-------------------------*///////
+	/*インスタンスFigureの生成*/
+	public static Figure create(Figure fig, Vector2 vec){
+		return Figure.create(fig, vec.x, vec.y);
+	}
+	public static Figure create(Figure fig, int x, int y){
+		//座標のセット
+		fig.position.x = x;
+		fig.position.y = y;
+		//現在稼働中のFrameに入れる
+		Global.MainFrame.add(fig);
+		//一応figureを返す(役立ちそう)
+		return fig;
+	}
+
+	/*インスタンスFigureの削除*/
+	public static void destroy(Figure fig){
+		//現在稼働中のFrameから消す.
+		Global.MainFrame.remove(fig);
+	}
+
+
+	/////------------------*コンストラクタ*------------------------////
 	public Figure(Shape shape, Vector2 position){
 		this.shape = shape;
 		this.position = position;
@@ -23,7 +46,7 @@ public class Figure {
 		this.position = Vector2.ZERO;
 	}
 
-
+	/////-----------------*publicメソッド*---------------------------////
 	/*座標を変更する*/
 	public void setPosition(int x, int y){
 		this.position.x = x;

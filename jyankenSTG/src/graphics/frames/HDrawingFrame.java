@@ -12,6 +12,9 @@ abstract public class HDrawingFrame extends JPanel implements Runnable{
 	protected long time;//描画の間隔時間
 	public boolean clearPast;//更新時に前の描画を消すか
 
+	public int width;
+	public int height;
+
 	private boolean enable;//更新, 描画が有効か
 	private boolean activate;//falseにすると描画更新が終わる(startで再開できるが)
 	/*コンストラクタ*/
@@ -22,6 +25,9 @@ abstract public class HDrawingFrame extends JPanel implements Runnable{
 		 * frameRate 1秒間の更新回数
 		 */
 		super.setPreferredSize(new Dimension(width, height));
+		this.height = height;
+		this.width  = width;
+
 		this.frameRate = frameRate;
 		this.clearPast = true;
 		setFrameRate(frameRate);

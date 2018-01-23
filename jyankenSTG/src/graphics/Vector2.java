@@ -35,4 +35,8 @@ public class Vector2 {
 	public static Vector2 sum(Vector2 vec1, Vector2 vec2){
 		return new Vector2(vec1.x+vec2.x, vec1.y+vec2.y);
 	}
+	/*ベクトルの角度を求める*/
+	public static int getDirection(Vector2 vec){
+		return (int)Math.toDegrees(Math.atan2(vec.y, vec.x));
+	}
 }
