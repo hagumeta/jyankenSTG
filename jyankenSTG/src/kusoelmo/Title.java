@@ -26,7 +26,13 @@ public class Title implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO 自動生成されたメソッド・スタブ
-		cursor++;
+		int keycode = e.getKeyCode();
+
+		if (keycode == KeyEvent.VK_UP){
+
+		}else if(keycode == KeyEvent.VK_DOWN) {
+
+		}
 	}
 
 	@Override
