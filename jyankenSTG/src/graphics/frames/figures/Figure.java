@@ -11,7 +11,7 @@ import graphics.frames.figures.shapes.Shape;
 public class Figure {
 	public Shape shape;//自分の形
 	public Vector2 position;//自分の座標
-	public boolean visible = true;//可視性
+	public boolean enable = true;//存在しているかどうか(falseだと描画も更新もされず，存在しない扱いとなる)
 
 
 	//////-----------------*staticメソッド-------------------------*///////
@@ -43,7 +43,7 @@ public class Figure {
 	}
 	public Figure(){
 		this.shape = null;
-		this.position = Vector2.ZERO;
+		this.position = new Vector2(0,0);
 	}
 
 	/////-----------------*publicメソッド*---------------------------////
@@ -56,7 +56,7 @@ public class Figure {
 
 	/*自身を描画*/
 	public void draw(Graphics g){
-		if(this.visible && shape != null){
+		if(this.enable && shape != null){
 			this.shape.draw(g, position);
 		}
 	}

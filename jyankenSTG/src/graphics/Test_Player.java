@@ -26,15 +26,22 @@ public class Test_Player extends JFrame implements KeyListener{
 		HFigureFrame hsf = new HFigureFrame(900, 1200, 30);//1秒間に30回更新
 		Global.MainFrame = hsf;
 
-		Figure.create(new Player(), 300, 300);
-		Figure.create(new Bullet(), 300, 300);
+		Figure.create(new Player(), 300, 700);
+		//Figure.create(new Bullet(), 300, 300);
+
+		Figure.create(new Enemy(), 300, 50);
 
 		///HShapesFrameをフレームウインドウにアタッチ
 		frame.add(hsf, BorderLayout.CENTER);
 		frame.setVisible(true);
 		frame.pack();
 
+
+		//ゲームシーンの初期化
+		GameInitialize.init();
+
 		hsf.start();//スタート
+		System.out.println("システム スタート");
 	}
 
 

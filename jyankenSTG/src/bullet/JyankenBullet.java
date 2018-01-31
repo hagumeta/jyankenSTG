@@ -1,4 +1,5 @@
-package graphics;
+package bullet;
+
 
 import java.awt.Color;
 
@@ -12,6 +13,11 @@ public class JyankenBullet extends Bullet {
 
 	public JyankenBullet(int jyanken){
 		super();
+		this.switchJyanken(jyanken);
+		}
+
+	///じゃんけん属性の変更
+	public void switchJyanken(int jyanken){
 		this.jyanken = jyanken;
 
 		//じゃんけん属性によって見た目を変える
@@ -28,5 +34,6 @@ public class JyankenBullet extends Bullet {
 			//this.shape = (Shape)(new Image(Global.imagePaper));
 			this.shape.color = Color.green;
 		}
+
 	}
 }

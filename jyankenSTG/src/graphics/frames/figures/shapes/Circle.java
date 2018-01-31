@@ -13,11 +13,11 @@ public class Circle extends Shape{
 	/*コンストラクタ*/
 	public Circle(int radius, Color color, boolean filled){
 		super(color, filled);
-		this.radius = radius;
+		this.radius = radius*2;
 	}
 	public Circle(int radius){
 		super();
-		this.radius = radius;
+		this.radius = radius*2;
 	}
 
 	///描画メソッド

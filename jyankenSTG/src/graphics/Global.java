@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import bullet.EnemyBullet;
 import graphics.frames.HFigureFrame;
 
 public class Global {
@@ -30,6 +31,7 @@ public class Global {
 		initKey();
 		///画像のロード
 		loadImages();
+
 	}
 
 
@@ -49,6 +51,13 @@ public class Global {
 		*/
 
 	}
+
+	/*敵弾の集合(当たり判定の処理用)*/
+	public static EnemyBullet EnemyBullets[] = new EnemyBullet[200];
+
+	/*ボス敵(当たり判定の処理用)*/
+	public static Enemy Boss;
+
 
 	/*画像の読み取り*/
 	public void loadImages(){

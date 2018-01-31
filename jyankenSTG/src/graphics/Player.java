@@ -1,6 +1,10 @@
 package graphics;
 import java.awt.Color;
 
+import bullet.Bullet;
+import bullet.EnemyBullet;
+import bullet.JyankenBullet;
+import bullet.PlayerBullet;
 import graphics.frames.figures.Figure;
 import graphics.frames.figures.MovingFigure;
 import graphics.frames.figures.shapes.Circle;
@@ -8,39 +12,58 @@ import graphics.frames.figures.shapes.Circle;
 public class Player extends MovingFigure{
 	int moveSpeed = 5;//動くスピード
 	int shotCount = 0;//ショットカウンタ
-	int shotDig	  = 30;//ショット間隔(フレーム)
+	int shotDig	  = 10;//ショット間隔(フレーム)
+
+	Vector2 centerPos;//自身の中心座標
+	int radius = 30;//自身の半径
+	int colRad = 15;//自身のあたり判定の半径
 
 	/*コンストラクタ*/
 	public Player(){
 		this.shape = new Circle(30, Color.blue, true);
 		this.position = new Vector2(200, 200);
-		this.speed = Vector2.ZERO;
+		this.speed = new Vector2(0,0);
+		this.enable = true;
+		this.frozen = false;
+
+		this.centerPos = this.position;
 	}
 
 
 	/*自機の更新*/
 	protected void updateAdd()
 	{
+
 		//動き
 		move();
 
+		//当たり判定
+		checkCollide();
+
+		//ショットマネージャ
+		shotManage();
+	}
+
+	private void shotManage(){
 		/*カウンタがたまるまでは弾は打てない*/
-		if(shotCount >= 30){
+		if(shotCount >= 10){
 			if(Global.keyInput[4]){//V
-				shot(new JyankenBullet(0));//グー
+				shot(new PlayerBullet(0));//グー
+				return;
 			}
 			if(Global.keyInput[5]){//B
-				shot(new JyankenBullet(1));//チョキ
+				shot(new PlayerBullet(1));//チョキ
+				return;
 			}
 			if(Global.keyInput[6]){//N
-				shot(new JyankenBullet(2));//パー
+				shot(new PlayerBullet(2));//パー
+				return;
 			}
 		}else{
 			//カウンタを一つ増やす
 			shotCount++;
 		}
 	}
-
 
 	/*ショット*/
 	private void shot(JyankenBullet bul){
@@ -49,6 +72,35 @@ public class Player extends MovingFigure{
 		bul1.setSpeed(30, 90);
 		//カウンタを0に
 		shotCount = 0;
+	}
+
+	/*自身のあたり判定*/
+	private void checkCollide(){
+		//敵弾と
+		for(int i=0; i<Global.EnemyBullets.length; i++){
+			EnemyBullet eb = Global.EnemyBullets[i];
+			if(eb.enable){
+				if(Vector2.getDisPow(this.centerPos, eb.centerPos) < Math.pow(this.colRad+eb.radius, 2)){
+					//衝突
+					this.death();
+					break;
+				}
+			}
+		}
+		/*
+		//敵とのあたり判定
+		if(Global.Boss != null && Global.Boss.enable){
+			if(Vector2.getDisPow(this.centerPos, Global.Boss.centerPos) < Math.pow(this.radius+Global.Boss.radius, 2)){
+				collisionWithEnemy(Global.Boss);
+			}
+		}*/
+	}
+
+	/*自機の死亡*/
+	private void death(){
+		this.enable = false;
+		//ゲームオーバーと表示する
+		Figure.create(new FigText("GAME OVER", Color.red), new Vector2(400, 200));
 	}
 
 
@@ -70,6 +122,8 @@ public class Player extends MovingFigure{
 			//スピードを変更
 			super.setSpeed(moveSpeed, dir);
 		}
+		//自身の中心座標の更新
+		this.centerPos = new Vector2(this.position.x + this.radius, this.position.y + this.radius);
 	}
 
 }

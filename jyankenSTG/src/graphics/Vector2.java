@@ -30,10 +30,23 @@ public class Vector2 {
 		this.y = (int)Math.round(-r*Math.sin(a));
 	}
 
+	/*ベクトルに足す*/
+	public void addBoth(int addX, int addY){
+		this.x += addX;
+		this.y += addY;
+	}
 
 	/*ベクトルの足し算*/
 	public static Vector2 sum(Vector2 vec1, Vector2 vec2){
 		return new Vector2(vec1.x+vec2.x, vec1.y+vec2.y);
+	}
+	/*二つの距離（の二乗）を求める*/
+	public static int getDisPow(Vector2 vec1, Vector2 vec2){
+		return (vec1.x-vec2.x)*(vec1.x-vec2.x) + (vec1.y-vec2.y)*(vec1.y-vec2.y);
+	}
+	/*二つの距離を求める*/
+	public static int getDis(Vector2 vec1, Vector2 vec2){
+		return (int)Math.round(Math.sqrt((double)getDisPow(vec1, vec2)));
 	}
 	/*ベクトルの角度を求める*/
 	public static int getDirection(Vector2 vec){

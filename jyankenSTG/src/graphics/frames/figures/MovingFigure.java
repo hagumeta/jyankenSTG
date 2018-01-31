@@ -13,8 +13,8 @@ public class MovingFigure extends Figure implements Updatable{
 	/*コンストラクタ*/
 	public MovingFigure(){
 		super();
-		this.speed = Vector2.ZERO;
-		this.accelerate = Vector2.ZERO;
+		this.speed = new Vector2(0, 0);
+		this.accelerate = new Vector2(0, 0);
 	}
 	public MovingFigure(Shape shape){
 		this();
@@ -37,7 +37,7 @@ public class MovingFigure extends Figure implements Updatable{
 
 	/*各フレームごとに呼び出される更新メソッド*/
 	final public void update(){
-		if(!frozen){
+		if(!this.frozen && this.enable){
 			//加速する
 			this.speed = Vector2.sum(this.speed, this.accelerate);
 			//座標移動(進む)

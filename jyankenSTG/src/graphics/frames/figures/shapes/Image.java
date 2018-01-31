@@ -22,6 +22,6 @@ public class Image extends Shape{
 	public void drawSelfWithFilled(Graphics g, Vector2 pos){}
 	public void drawSelf(Graphics g, Vector2 pos){
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(image, null, 10, 10);
+		g2d.drawImage(image, null, pos.x, pos.y);
 	}
 }
