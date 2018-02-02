@@ -1,50 +1,68 @@
 package kusoelmo;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Title implements KeyListener {
+import graphics.Global;
+
+public class Title extends JPanel{
 	private int cursor;
+	private JButton mode[];
 	private JPanel panel;
-	private JLabel label[];
 
 	public Title() {
 		cursor = 0;
+		mode = new JButton[4];
+		mode[0] = new JButton("CHALLENGE MODE (EASY)");
+		mode[1] = new JButton("CHALLENGE MODE (NORMAL)");
+		mode[2] = new JButton("CHALLENGE MODE (HARD)");
+		mode[3] = new JButton("ENDLESS MODE");
 		panel = new JPanel();
-		label = new JLabel[4];
-		label[0] = new JLabel("CHALLENGE MODE (EASY)");
-		label[1] = new JLabel("CHALLENGE MODE (NORMAL)");
-		label[2] = new JLabel("CHALLENGE MODE (HARD)");
-		label[3] = new JLabel("ENDLESS MODE");
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-	}
+		panel.setLayout(new GridLayout(4, 1));
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO 自動生成されたメソッド・スタブ
-		int keycode = e.getKeyCode();
-
-		if (keycode == KeyEvent.VK_UP){
-
-		}else if(keycode == KeyEvent.VK_DOWN) {
-
+		mode[0].setBackground(Color.WHITE);
+		for(int i = 1; i < 4; i++) {
+			mode[i].setBackground(Color.ORANGE);
 		}
+
+		for(int i = 0; i < 4; i++) {
+			mode[i].setFont(new Font("Serif", Font.BOLD, 28));
+			mode[i].setAlignmentX((JComponent.CENTER_ALIGNMENT));
+			panel.add(mode[i]);
+		}
+
+		add(new JLabel("じゃんけんシューティング"));
+
+		Global.nowGameScene = this;
+		add(panel);
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO 自動生成されたメソッド・スタブ
-		//使わない
+	public void cursorUp() {
+		mode[cursor].setBackground(Color.ORANGE);
+		if(cursor > 0) {
+			cursor--;
+		}else {
+			cursor = 3;
+		}
+		mode[cursor].setBackground(Color.WHITE);
 	}
 
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO 自動生成されたメソッド・スタブ
-		//使わない
+	public void cursorDown() {
+		mode[cursor].setBackground(Color.ORANGE);
+		if(cursor < 3) {
+			cursor++;
+		}else {
+			cursor = 0;
+		}
+		mode[cursor].setBackground(Color.WHITE);
 	}
 
 }
