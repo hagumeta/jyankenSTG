@@ -12,11 +12,11 @@ import graphics.frames.figures.shapes.Circle;
 public class Player extends MovingFigure{
 	int moveSpeed = 5;//動くスピード
 	int shotCount = 0;//ショットカウンタ
-	int shotDig	  = 10;//ショット間隔(フレーム)
+	int shotDig	  = 8;//ショット間隔(フレーム)
 
 	Vector2 centerPos;//自身の中心座標
 	int radius = 30;//自身の半径
-	int colRad = 15;//自身のあたり判定の半径
+	int colRad = 10;//自身のあたり判定の半径
 
 	/*コンストラクタ*/
 	public Player(){
@@ -27,6 +27,9 @@ public class Player extends MovingFigure{
 		this.frozen = false;
 
 		this.centerPos = this.position;
+
+		//プレイヤーをグローバル設定
+		Global.player = this;
 	}
 
 
@@ -47,15 +50,15 @@ public class Player extends MovingFigure{
 	private void shotManage(){
 		/*カウンタがたまるまでは弾は打てない*/
 		if(shotCount >= 10){
-			if(Global.keyInput[4]){//V
+			if(Global.keyInput[4]){//Z
 				shot(new PlayerBullet(0));//グー
 				return;
 			}
-			if(Global.keyInput[5]){//B
+			if(Global.keyInput[5]){//X
 				shot(new PlayerBullet(1));//チョキ
 				return;
 			}
-			if(Global.keyInput[6]){//N
+			if(Global.keyInput[6]){//C
 				shot(new PlayerBullet(2));//パー
 				return;
 			}
@@ -63,6 +66,9 @@ public class Player extends MovingFigure{
 			//カウンタを一つ増やす
 			shotCount++;
 		}
+
+		///画面外から戻す
+		constrain();
 	}
 
 	/*ショット*/
@@ -87,13 +93,6 @@ public class Player extends MovingFigure{
 				}
 			}
 		}
-		/*
-		//敵とのあたり判定
-		if(Global.Boss != null && Global.Boss.enable){
-			if(Vector2.getDisPow(this.centerPos, Global.Boss.centerPos) < Math.pow(this.radius+Global.Boss.radius, 2)){
-				collisionWithEnemy(Global.Boss);
-			}
-		}*/
 	}
 
 	/*自機の死亡*/
@@ -126,4 +125,20 @@ public class Player extends MovingFigure{
 		this.centerPos = new Vector2(this.position.x + this.radius, this.position.y + this.radius);
 	}
 
+	/*自機を画面外から戻す*/
+	private void constrain(){
+		if(this.centerPos.x < 0){
+			this.setPosition(-this.radius, this.position.y);
+		}
+		if(this.centerPos.x > Global.MainFrame.width){
+			this.setPosition(Global.MainFrame.width+this.radius, this.position.y);
+		}
+		if(this.centerPos.y < 0){
+			this.setPosition(this.radius, this.radius);
+		}
+		if(this.centerPos.y > Global.MainFrame.height){
+			this.setPosition(this.position.x, Global.MainFrame.height-this.radius);
+		}
+
+	}
 }

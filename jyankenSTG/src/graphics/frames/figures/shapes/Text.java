@@ -33,6 +33,12 @@ public class Text extends Shape{
 		this.font = new Font(fontName, fontStyle, fontSize);
 	}
 
+	/*フォントサイズの設定*/
+	public void setFontSize(int fontSize){
+		this.fontSize = fontSize;
+		this.font = new Font(fontName, fontStyle, fontSize);
+	}
+
 	/*描画(塗りつぶしなんてものはないのでどちらも一緒)*/
 	public void drawSelf(Graphics g, Vector2 pos){
 		g.setFont(font);

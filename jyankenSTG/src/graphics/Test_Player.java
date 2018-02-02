@@ -23,13 +23,14 @@ public class Test_Player extends JFrame implements KeyListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//HShapesFrameの用意
-		HFigureFrame hsf = new HFigureFrame(800, 700, 30);//1秒間に30回更新
+		HFigureFrame hsf = new HFigureFrame(1000, 750, 30);//1秒間に30回更新
 		Global.MainFrame = hsf;
 
-		Figure.create(new Player(), 300, 700);
-		//Figure.create(new Bullet(), 300, 300);
+		//敵の用意
+		Global.difficulty =2 ;
+		Enemy.create();
 
-		Figure.create(new Enemy(), 300, 50);
+		Figure.create(new Player(), 300, 600);
 
 		///HShapesFrameをフレームウインドウにアタッチ
 		frame.add(hsf, BorderLayout.CENTER);

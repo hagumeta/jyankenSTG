@@ -10,6 +10,8 @@ public class GameInitialize {
 		///敵弾の準備
 		loadEnemyBullets();
 	}
+	//グローバル変数初期化
+	Global a = new Global();//使いません(コンストラクタ使いたかっただけ)
 
 	//敵弾の準備を行う.
 	private static void loadEnemyBullets(){

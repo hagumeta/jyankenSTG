@@ -16,6 +16,16 @@ public class Global {
 	//現在のゲームシーンを入れておく
 	public static JPanel nowGameScene;
 
+	/*難易度
+	 * 0 easy
+	 * 1 normal
+	 * 2 difficult
+	 * 3 endless
+	 * */
+	public static int difficulty=0;
+
+
+
 	/*キーボードの入力*/
 	public static boolean[] keyInput = new boolean[7];
 
@@ -27,14 +37,12 @@ public class Global {
 	public static BufferedImage imageScissors;//チョキ
 	public static BufferedImage imagePaper;//	パー
 
-
-	/*コンストラクタ*/
+	/*変数初期化*/
 	public Global(){
 		///キーボードの初期化
 		initKey();
 		///画像のロード
 		loadImages();
-
 	}
 
 
@@ -48,9 +56,9 @@ public class Global {
 		 1 : ↓
 		 2 : ←
 		 3 : →
-		 4 : V
-		 5 : B
-		 6 : N
+		 4 : Z
+		 5 : X
+		 6 : C
 		*/
 
 	}
@@ -61,21 +69,26 @@ public class Global {
 	/*ボス敵(当たり判定の処理用)*/
 	public static Enemy Boss;
 
+	/*プレイヤー(自機狙い用)*/
+	public static Player player;
 
 	/*画像の読み取り*/
 	public void loadImages(){
 		try {
-			BufferedImage imageLock = ImageIO.read(new File("C:\\beach.jpg"));
+			//グー
+			BufferedImage imageLock = ImageIO.read(new File("gu.png"));
 		} catch (IOException e) {
 			System.out.println("画像ロード失敗!");
 		}
 		try {
-			BufferedImage imageScissors = ImageIO.read(new File("C:\\beach.jpg"));
+			//チョキ
+			BufferedImage imageScissors = ImageIO.read(new File("chyoki.png"));
 		} catch (IOException e) {
 			System.out.println("画像ロード失敗!");
 		}
 		try {
-			BufferedImage imagePaper = ImageIO.read(new File("C:\\beach.jpg"));
+			//パー
+			BufferedImage imagePaper = ImageIO.read(new File("pa.png"));
 		} catch (IOException e) {
 			System.out.println("画像ロード失敗!");
 		}
