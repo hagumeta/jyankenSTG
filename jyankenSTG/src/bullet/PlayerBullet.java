@@ -21,7 +21,7 @@ public class PlayerBullet extends JyankenBullet{
 				if(Vector2.getDisPow(this.centerPos, eb.centerPos) < Math.pow(this.radius+eb.radius, 2)){
 					//衝突
 					collisionWithEnemyBullet(eb);
-					break;
+					//break;
 				}
 			}
 		}

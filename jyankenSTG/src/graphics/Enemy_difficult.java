@@ -54,7 +54,7 @@ public class Enemy_difficult extends Enemy {
 				}else{
 					///見えない敵の弾幕攻撃
 					this.shape.visible = false;//見えなくする
-					if(count % 20 == 0){
+					if(count % 25 == 0){
 						///自機狙い扇弾
 
 						int dir = Vector2.getDirection(this.centerPos, Global.player.centerPos) + Mathf.randomRange(-10, 10);//自機狙い方向+乱数少し
@@ -63,10 +63,11 @@ public class Enemy_difficult extends Enemy {
 							EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd, dir - 20 + 10*i));
 						}
 					}
-					if(count >= 79){
-						//円形拡散弾
-						for(int i=0; i<20; i++){
-							EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd, i*18));
+					if(count >= 99){
+						//噴火
+						for(int i=0; i<10; i++){
+							EnemyBullet b = EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd, i*18));
+							b.setAccelerate(1, 270);
 						}
 						//瞬間移動
 						this.position = new Vector2(Mathf.randomRange(0, Global.MainFrame.width-this.radius), Mathf.randomRange(0, 100));

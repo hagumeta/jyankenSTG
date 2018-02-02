@@ -27,7 +27,7 @@ public class Test_Player extends JFrame implements KeyListener{
 		Global.MainFrame = hsf;
 
 		//敵の用意
-		Global.difficulty =2 ;
+		Global.difficulty = 2;
 		Enemy.create();
 
 		Figure.create(new Player(), 300, 600);

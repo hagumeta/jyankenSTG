@@ -39,6 +39,7 @@ public class EnemyBullet extends JyankenBullet {
 	public void delete(){
 		this.setPosition(0, 0);
 		this.setSpeed(0, 0);
+		this.setAccelerate(new Vector2(0,0));
 		this.enable = false;
 	}
 }
