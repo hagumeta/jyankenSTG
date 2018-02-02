@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import graphics.Global;
 
@@ -17,9 +18,12 @@ public class Test_Title extends JFrame implements KeyListener{
 		super.setFocusable(true);
 		super.addKeyListener((KeyListener)this);
 	}
-	
+
 	static Test_Title frame;
 	public static void main(String args[]){
+
+		Global.setup();
+
 		//フレームの用意
 		frame = new Test_Title("fuga");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,10 +35,11 @@ public class Test_Title extends JFrame implements KeyListener{
 		frame.setVisible(true);
 		frame.pack();
 	}
-	
-	public static void sceneMove() {
+
+	/*シーン移動*/
+	public static void sceneMove(JPanel p) {
 		frame.remove(Global.nowGameScene);
-		frame.add(title);
+		frame.add(p);
 	}
 
 	//キー入力の受付

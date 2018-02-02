@@ -20,7 +20,7 @@ public class Global {
 	 * 0 easy
 	 * 1 normal
 	 * 2 difficult
-	 * 3 endless
+	 * 3 endless(未実装)
 	 * */
 	public static int difficulty=0;
 
@@ -38,7 +38,7 @@ public class Global {
 	public static BufferedImage imagePaper;//	パー
 
 	/*変数初期化*/
-	public Global(){
+	public static void setup(){
 		///キーボードの初期化
 		initKey();
 		///画像のロード
@@ -47,7 +47,7 @@ public class Global {
 
 
 	/*キーボードの初期化*/
-	public void initKey(){
+	public static void initKey(){
 		for(int i=0; i<7; i++){
 			keyInput[i] = false;
 		}
@@ -73,7 +73,7 @@ public class Global {
 	public static Player player;
 
 	/*画像の読み取り*/
-	public void loadImages(){
+	public static void loadImages(){
 		try {
 			//グー
 			BufferedImage imageLock = ImageIO.read(new File("gu.png"));

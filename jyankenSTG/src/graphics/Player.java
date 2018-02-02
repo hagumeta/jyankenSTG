@@ -99,7 +99,7 @@ public class Player extends MovingFigure{
 	private void death(){
 		this.enable = false;
 		//ゲームオーバーと表示する
-		Figure.create(new FigText("GAME OVER", Color.red), new Vector2(400, 200));
+		Figure.create(new GameOver(), new Vector2(400, 200));
 	}
 
 

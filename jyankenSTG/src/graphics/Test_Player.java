@@ -37,13 +37,12 @@ public class Test_Player extends JFrame implements KeyListener{
 		frame.setVisible(true);
 		frame.pack();
 
-
 		//ゲームシーンの初期化
 		GameInitialize.init();
 
 		hsf.start();//スタート
-		System.out.println("システム スタート");
-	}
+		Global.nowGameScene = hsf;
+		}
 
 
 	//キー入力の受付
