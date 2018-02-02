@@ -48,6 +48,10 @@ public class Vector2 {
 	public static int getDis(Vector2 vec1, Vector2 vec2){
 		return (int)Math.round(Math.sqrt((double)getDisPow(vec1, vec2)));
 	}
+	/*二つの角度を求める*/
+	public static int getDirection(Vector2 vec1, Vector2 vec2){
+		return (int)Math.toDegrees(Math.atan2(vec1.y-vec2.y, vec2.x-vec1.x));
+	}
 	/*ベクトルの角度を求める*/
 	public static int getDirection(Vector2 vec){
 		return (int)Math.toDegrees(Math.atan2(vec.y, vec.x));

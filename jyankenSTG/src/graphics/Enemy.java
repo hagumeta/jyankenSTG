@@ -3,15 +3,19 @@ package graphics;
 import java.awt.Color;
 
 import bullet.Bullet;
-import bullet.EnemyBullet;
 import graphics.frames.figures.Figure;
 import graphics.frames.figures.shapes.Circle;
+import graphics.frames.figures.shapes.Text;
 
 public class Enemy extends Bullet {
-	public int count = 0;//ショット間隔
+
 	public int jyanken = 0;//じゃんけん属性
-	public double spd = 7.0;//敵弾のスピード
-	public int direction = 0;//敵弾の打つ方向
+
+	public int timeCount = 0;//タイムカウント
+
+	public int countDown = 100;//スタートまでの時間
+	public boolean start = false;//始まってるかどうか
+	private FigText startText;//スタート文字
 
 	public int HP;//HP
 
@@ -21,36 +25,71 @@ public class Enemy extends Bullet {
 		this.position = new Vector2(0, 0);
 		this.speed = new Vector2(0, 0);
 		this.accelerate = new Vector2(0, 0);
-		this.HP = 20;
 		this.radius = 100;
+		this.timeCount = 0;
 
+		//HPバーの用意
 		Figure.create(new Enemy_HP(), new Vector2(500, 50));
 
 		//自身をボス敵に設定する
 		Global.Boss = this;
-		}
-	public void behave(){
-		count++;
-		if(count >= 3){
-			//ショット
-			if(HP >= 10){
-				//うずまき
-				EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd, direction));
-				EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd, 360-direction));
-			}else{
-				//シャワー
-				EnemyBullet eb1 = EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd*2, Mathf.randomRange(30,150)));
-				eb1.accelerate = new Vector2(0, 1);
-				EnemyBullet eb2 = EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd*2, Mathf.randomRange(30,150)));
-				eb2.accelerate = new Vector2(0, 1);
-			}
-			count = 0;
-			direction += 10;
 
-			//じゃんけん属性の変更
-			jyanken++;
-			jyanken %= 3;
+		//スタートの文字を作る
+		startText = (FigText)Figure.create(new FigText("スタート！！", Color.CYAN), new Vector2(200, 400));
+		((Text)startText.shape).setFontSize(100);
+		}
+
+
+	public void updateAdd(){
+		if(start){
+			super.updateAdd();
+			timeCount++;//タイムカウント＋
+			this.behave();
+		}else{
+			//カウントダウン
+			countDown--;
+			if(countDown <= 0){
+				//スタート
+				start = true;
+				Figure.destroy(startText);
+			}
+		}
+	}
+	//自身の挙動(追加)
+	public void behave(){}
+
+
+	/*グローバル変数においてある難易度設定でエネミー作成*/
+	public static void create(){
+		Vector2 enemyPos = new Vector2(Global.MainFrame.width/2-100, 50);
+		switch(Global.difficulty){
+		case 0://easy
+			Figure.create(new Enemy_easy(), enemyPos);
+			break;
+		case 1://normal
+			Figure.create(new Enemy_normal(), enemyPos);
+			break;
+		case 2://difficult
+			Figure.create(new Enemy_difficult(), enemyPos);
+			break;
+		case 3://エンドレス
+			/*
+			Figure.create(new Enemy_endless(), enemyPos);
+			break;
+			*/
 		}
 	}
 
+	/*ボスの撃破*/
+	public static void destroy(){
+		//ボスを消す
+		Figure.destroy(Global.Boss);
+		Global.Boss.enable = false;
+
+		//ゲームクリアと表示する
+		Figure.create(new FigText("GAME CLEAR", Color.green), new Vector2(400, 200));
+		//スコアを表示する(経過時間)
+		double time = (double)Global.Boss.timeCount/30.0;
+		Figure.create(new FigText("Time : \n" + time + " S", Color.green), new Vector2(400, 300));
+	}
 }

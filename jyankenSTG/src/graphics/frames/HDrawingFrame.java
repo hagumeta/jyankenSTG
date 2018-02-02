@@ -2,6 +2,8 @@ package graphics.frames;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
@@ -12,8 +14,10 @@ abstract public class HDrawingFrame extends JPanel implements Runnable{
 	protected long time;//描画の間隔時間
 	public boolean clearPast;//更新時に前の描画を消すか
 
-	public int width;
-	public int height;
+	public int width;//横幅
+	public int height;//縦幅
+
+	public BufferedImage background;//背景
 
 	private boolean enable;//更新, 描画が有効か
 	private boolean activate;//falseにすると描画更新が終わる(startで再開できるが)
@@ -31,6 +35,7 @@ abstract public class HDrawingFrame extends JPanel implements Runnable{
 		this.frameRate = frameRate;
 		this.clearPast = true;
 		setFrameRate(frameRate);
+
 	}
 
 	//---------------/*以下オーバーライド用メソッド*/---------------//
@@ -78,6 +83,11 @@ abstract public class HDrawingFrame extends JPanel implements Runnable{
 		if(clearPast){
 			super.paintComponent(g);
 		}
+		//背景の描画
+		if(this.background != null){
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.drawImage(this.background, null, 0, 0);
+		}
 		draw(g);
 	}
 
@@ -89,6 +99,12 @@ abstract public class HDrawingFrame extends JPanel implements Runnable{
 		thread = new Thread(this);
 		thread.start();
 	}
+
+	/*フレームの背景を設定*/
+	final public void setBackground(BufferedImage back){
+		this.background = back;
+	}
+
 
 	/*(ちょっとした)更新/描画のストップ*/
 	final public void stop(){

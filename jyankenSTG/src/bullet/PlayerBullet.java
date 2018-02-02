@@ -1,12 +1,8 @@
 package bullet;
 
-import java.awt.Color;
-
 import graphics.Enemy;
-import graphics.FigText;
 import graphics.Global;
 import graphics.Vector2;
-import graphics.frames.figures.Figure;
 
 public class PlayerBullet extends JyankenBullet{
 	public PlayerBullet(int jyanken){
@@ -32,7 +28,7 @@ public class PlayerBullet extends JyankenBullet{
 
 		//敵とのあたり判定
 		if(Global.Boss != null){
-			if(Global.Boss.enable){
+			if(Global.Boss.enable && Global.Boss.start){
 				if(Vector2.getDisPow(this.centerPos, Global.Boss.centerPos) < Math.pow(this.radius+Global.Boss.radius, 2)){
 					collisionWithEnemy(Global.Boss);
 				}
@@ -64,11 +60,8 @@ public class PlayerBullet extends JyankenBullet{
 		//相手のHPを1減らして0になったら消す
 		en.HP--;
 		if(en.HP <= 0){
-			//消す
-			Figure.destroy(en);
-			Global.Boss.enable = false;
-			//ゲームクリアと表示する
-			Figure.create(new FigText("GAME CLEAR", Color.green), new Vector2(400, 200));
+			//破壊
+			Global.Boss.destroy();
 		}
 		this.delete();
 	}

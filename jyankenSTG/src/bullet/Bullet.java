@@ -28,14 +28,10 @@ public class Bullet extends MovingFigure{
 		}
 
 		this.centerPos = new Vector2(this.position.x + this.radius , this.position.y + this.radius);
-		this.behave();
 	}
 
 	///自身の削除方法
 	public void delete(){
 		Figure.destroy(this);
 	}
-
-	//自身の挙動(追加)
-	public void behave(){}
 }

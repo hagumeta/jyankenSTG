@@ -10,6 +10,7 @@ abstract public class Shape implements Drawable{
 
 	public Color color = Color.black;//色
 	public boolean filled = true;//塗りつぶすか
+	public boolean visible = true;//可視性かどうか
 
 	/*コンストラクタ*/
 	public Shape(Color color, boolean filled){
@@ -24,11 +25,13 @@ abstract public class Shape implements Drawable{
 	//-------------/*以下finalメソッド*/-------------//
 	/*描画*/
 	final public void draw(Graphics g, Vector2 pos){
-		g.setColor(color);
-		if(filled){
-			drawSelfWithFilled(g, pos);
-		}else{
-			drawSelf(g, pos);
+		if(this.visible){
+			g.setColor(color);
+			if(filled){
+				drawSelfWithFilled(g, pos);
+			}else{
+				drawSelf(g, pos);
+			}
 		}
 	}
 
