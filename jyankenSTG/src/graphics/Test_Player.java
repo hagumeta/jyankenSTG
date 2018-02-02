@@ -68,15 +68,15 @@ public class Test_Player extends JFrame implements KeyListener{
 	    	 Global.keyInput[3] = true;
 	         break;
 	      //Vキー
-	      case KeyEvent.VK_V:
+	      case KeyEvent.VK_Z:
 	    	 Global.keyInput[4] = true;
 	         break;
 	       //Bキー
-	      case KeyEvent.VK_B:
+	      case KeyEvent.VK_X:
 	    	 Global.keyInput[5] = true;
 	         break;
 	       //Nキー
-	      case KeyEvent.VK_N:
+	      case KeyEvent.VK_C:
 	    	 Global.keyInput[6] = true;
 	         break;
 	      }
@@ -102,15 +102,15 @@ public class Test_Player extends JFrame implements KeyListener{
 	    	 Global.keyInput[3] = false;
 	         break;
 	      //Vキー
-	      case KeyEvent.VK_V:
+	      case KeyEvent.VK_Z:
 	    	 Global.keyInput[4] = false;
 	         break;
 	       //Bキー
-	      case KeyEvent.VK_B:
+	      case KeyEvent.VK_X:
 	    	 Global.keyInput[5] = false;
 	         break;
 	       //Nキー
-	      case KeyEvent.VK_N:
+	      case KeyEvent.VK_C:
 	    	 Global.keyInput[6] = false;
 	         break;
 	      }

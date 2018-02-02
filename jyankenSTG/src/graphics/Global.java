@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 import bullet.EnemyBullet;
 import graphics.frames.HFigureFrame;
@@ -12,6 +13,8 @@ import graphics.frames.HFigureFrame;
 public class Global {
 	/*グローバル変数を置いておくクラス*/
 
+	//現在のゲームシーンを入れておく
+	public static JPanel nowGameScene;
 
 	/*難易度
 	 * 0 easy
