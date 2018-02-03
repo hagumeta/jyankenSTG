@@ -76,19 +76,19 @@ public class Global {
 	public static void loadImages(){
 		try {
 			//グー
-			BufferedImage imageLock = ImageIO.read(new File("gu.png"));
+			BufferedImage imageLock = ImageIO.read(new File("src/gu.png"));
 		} catch (IOException e) {
 			System.out.println("画像ロード失敗!");
 		}
 		try {
 			//チョキ
-			BufferedImage imageScissors = ImageIO.read(new File("chyoki.png"));
+			BufferedImage imageScissors = ImageIO.read(new File("src/tyoki.png"));
 		} catch (IOException e) {
 			System.out.println("画像ロード失敗!");
 		}
 		try {
 			//パー
-			BufferedImage imagePaper = ImageIO.read(new File("pa.png"));
+			BufferedImage imagePaper = ImageIO.read(new File("src/pa.png"));
 		} catch (IOException e) {
 			System.out.println("画像ロード失敗!");
 		}
