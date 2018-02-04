@@ -98,8 +98,8 @@ public class Player extends MovingFigure{
 	/*自機の死亡*/
 	private void death(){
 		this.enable = false;
-		//ゲームオーバーと表示する
-		Figure.create(new GameOver(), new Vector2(400, 200));
+		//ゲームオーバー
+		Result.gameOver();
 	}
 
 
@@ -131,7 +131,7 @@ public class Player extends MovingFigure{
 			this.setPosition(-this.radius, this.position.y);
 		}
 		if(this.centerPos.x > Global.MainFrame.width){
-			this.setPosition(Global.MainFrame.width+this.radius, this.position.y);
+			this.setPosition(Global.MainFrame.width-this.radius, this.position.y);
 		}
 		if(this.centerPos.y < 0){
 			this.setPosition(this.radius, this.radius);

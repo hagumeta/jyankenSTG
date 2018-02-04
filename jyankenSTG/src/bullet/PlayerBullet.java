@@ -17,6 +17,9 @@ public class PlayerBullet extends JyankenBullet{
 		//敵弾と
 		for(int i=0; i<Global.EnemyBullets.length; i++){
 			EnemyBullet eb = Global.EnemyBullets[i];
+			if(!this.enable){
+				break;
+			}
 			if(eb.enable){
 				if(Vector2.getDisPow(this.centerPos, eb.centerPos) < Math.pow(this.radius+eb.radius, 2)){
 					//衝突
@@ -28,7 +31,7 @@ public class PlayerBullet extends JyankenBullet{
 
 		//敵とのあたり判定
 		if(Global.Boss != null){
-			if(Global.Boss.enable && Global.Boss.start){
+			if(Global.Boss.enable && Global.Boss.start && this.enable){
 				if(Vector2.getDisPow(this.centerPos, Global.Boss.centerPos) < Math.pow(this.radius+Global.Boss.radius, 2)){
 					collisionWithEnemy(Global.Boss);
 				}
@@ -52,6 +55,10 @@ public class PlayerBullet extends JyankenBullet{
 			//敵弾を削除
 			eb.delete();
 			break;
+		}
+		//じゃんけんカウンタをふやす
+		if(Global.jyankenCounter != null){
+			Global.jyankenCounter.addCount();
 		}
 	}
 

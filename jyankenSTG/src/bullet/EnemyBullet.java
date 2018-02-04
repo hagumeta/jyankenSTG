@@ -34,6 +34,15 @@ public class EnemyBullet extends JyankenBullet {
 		return null;
 	}
 
+	/*敵弾の全削除*/
+	public static void deleteAll(){
+		for(int i=0; i<Global.EnemyBullets.length; i++){
+			EnemyBullet eb = Global.EnemyBullets[i];
+			if(eb.enable){
+				eb.delete();
+			}
+		}
+	}
 
 	//自身の削除は自身を無効化することで行う．
 	public void delete(){

@@ -26,7 +26,7 @@ public class Text extends Shape{
 	}
 
 	/*フォント回りの設定*/
-	public void setFont(String fontName, int fontStyle, int fontSize){
+	final public void setFont(String fontName, int fontStyle, int fontSize){
 		this.fontName = fontName;
 		this.fontStyle = fontStyle;
 		this.fontSize = fontSize;
@@ -34,7 +34,7 @@ public class Text extends Shape{
 	}
 
 	/*フォントサイズの設定*/
-	public void setFontSize(int fontSize){
+	final public void setFontSize(int fontSize){
 		this.fontSize = fontSize;
 		this.font = new Font(fontName, fontStyle, fontSize);
 	}

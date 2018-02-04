@@ -17,7 +17,7 @@ public class Test_Title extends JFrame implements KeyListener{
 		super.addKeyListener((KeyListener)this);
 	}
 
-	static Test_Title frame;
+	public static Test_Title frame;
 	public static void main(String args[]){
 
 		Global.setup();

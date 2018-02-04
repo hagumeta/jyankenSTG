@@ -1,5 +1,4 @@
 package kusoelmo;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -13,6 +12,7 @@ import javax.swing.JPanel;
 import graphics.Game;
 import graphics.Global;
 import graphics.frames.HDrawingFrame;
+
 
 public class Title extends HDrawingFrame{
 	private int cursor;
@@ -108,6 +108,8 @@ public class Title extends HDrawingFrame{
 		}else {
 			count = 10;
 		}
+		//常にフレームにキー対象を向ける
+		
 	}
 
 	@Override

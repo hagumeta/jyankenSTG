@@ -19,7 +19,7 @@ public class Enemy extends Bullet {
 
 	public int HP;//HP
 
-	public Enemy(){
+	public Enemy(int HP){
 		super();
 		this.shape = new Circle(100, Color.BLACK, true);
 		this.position = new Vector2(0, 0);
@@ -27,15 +27,16 @@ public class Enemy extends Bullet {
 		this.accelerate = new Vector2(0, 0);
 		this.radius = 100;
 		this.timeCount = 0;
+		this.HP = HP;
 
 		//HPバーの用意
-		Figure.create(new Enemy_HP(), new Vector2(500, 50));
+		Figure.create(new Enemy_HP(this.HP));
 
 		//自身をボス敵に設定する
 		Global.Boss = this;
 
 		//スタートの文字を作る
-		startText = (FigText)Figure.create(new FigText("スタート！！", Color.CYAN), new Vector2(200, 400));
+		startText = (FigText)Figure.create(new FigText("START！！", Color.CYAN), new Vector2(200, 400));
 		((Text)startText.shape).setFontSize(100);
 		}
 
@@ -72,11 +73,9 @@ public class Enemy extends Bullet {
 		case 2://difficult
 			Figure.create(new Enemy_difficult(), enemyPos);
 			break;
-		case 3://エンドレス
-			/*
-			Figure.create(new Enemy_endless(), enemyPos);
-			break;
-			*/
+		case 3://エンドレス(未実装)
+			Result.comingSoon();
+
 		}
 	}
 
@@ -86,10 +85,12 @@ public class Enemy extends Bullet {
 		Figure.destroy(Global.Boss);
 		Global.Boss.enable = false;
 
-		//ゲームクリアと表示する
-		Figure.create(new FigText("GAME CLEAR", Color.green), new Vector2(400, 200));
-		//スコアを表示する(経過時間)
+		//敵弾を全て消す
+		//EnemyBullet.deleteAll();
+
+		///ゲームクリア
+		//クリアタイムの計算
 		double time = (double)Global.Boss.timeCount/30.0;
-		Figure.create(new FigText("Time : \n" + time + " S", Color.green), new Vector2(400, 300));
+		Result.gameClear(time);
 	}
 }

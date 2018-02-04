@@ -9,36 +9,46 @@ public class Enemy_normal extends Enemy {
 	public int direction = 0;//敵弾の打つ方向
 
 	public Enemy_normal(){
-		this.HP = 35;
+		super(35);
+		System.out.println(
+				"☆Noral☆\n相手も作戦を考えて打ってきているぞ！\n相手の手を見て打つ属性を考えよう！\n"
+				+ "移動して攻撃するから深追いするのは危険だぞ！"
+				);
 	}
 	public void behave(){
 		count++;
 		if(count % 35 == 0){
 			//自機狙い扇弾
-			int dir = Vector2.getDirection(this.position, Global.player.position);//自機狙い
-			System.out.println(dir);
+			int dir = Vector2.getDirection(this.centerPos, Global.player.position);//自機狙い
 			for(int i=0; i<13; i++){
-				EnemyBullet.shot(jyankenChange, this.position, new Vector2(spd, dir - 60 + 10*i));
+				EnemyBullet.shot(jyankenChange, this.centerPos, new Vector2(spd, dir - 60 + 10*i));
+			}
+			if(HP > 25){
+				//じゃんけん属性変更
+				jyankenChange ++;
+				jyankenChange %= 3;
 			}
 
-			if(HP <= 20){
+			if(HP <= 25){
 				//自機狙い弾(個別)扇弾3つ追加
 				for(int i=0; i<2; i++){
-					EnemyBullet.shot(jyankenChange, this.position, new Vector2(spd*2, dir-10+20*i));
+					EnemyBullet.shot(jyankenChange, this.centerPos, new Vector2(spd*2, dir-10+20*i));
 				}
-				EnemyBullet.shot((jyankenChange+1)%3, this.position, new Vector2(spd*1.2, dir+Mathf.randomRange(-5, 5)));
+				EnemyBullet.shot((jyankenChange+1)%3, this.centerPos, new Vector2(spd*1.2, dir+Mathf.randomRange(-5, 5)));
 
-				if(HP <= 7){
+				if(HP <= 10){
 					//加速
 					count++;
 				}
+
+				if(count >= 105){
+					//じゃんけん属性変更
+					jyankenChange ++;
+					jyankenChange %= 3;
+				}
 			}
 		}
-		if(count >= 105){
-			//じゃんけん属性変更
-			jyankenChange ++;
-			jyankenChange %= 3;
-		}
+
 
 		if(count >= 240){
 			//瞬間移動

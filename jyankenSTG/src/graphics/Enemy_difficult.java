@@ -10,7 +10,12 @@ public class Enemy_difficult extends Enemy {
 	public int jyanken = 0;
 
 	public Enemy_difficult(){
-		this.HP = 50;
+		super(50);
+		System.out.println(
+				"☆Hard☆\nここに挑戦するとはお主強者ですな!\nいままでの成果を見せてやれ！\n"
+				+ "攻略のヒントは今一番有利な属性を見分けることだ！\n"
+				+ "頑張れよ！"
+				);
 	}
 	public void behave(){
 		count++;
@@ -57,22 +62,25 @@ public class Enemy_difficult extends Enemy {
 					if(count % 25 == 0){
 						///自機狙い扇弾
 
-						int dir = Vector2.getDirection(this.centerPos, Global.player.centerPos) + Mathf.randomRange(-10, 10);//自機狙い方向+乱数少し
-
+						int dir = Vector2.getDirection(this.centerPos, Global.player.centerPos) + Mathf.randomRange(-15, 15);//自機狙い方向+乱数少し
 						for(int i=0; i<5; i++){
 							EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd, dir - 20 + 10*i));
 						}
 					}
+					if(count % 50 == 0){
+						//属性変更
+						jyanken = (jyanken+2)%3;
+					}
+
 					if(count >= 99){
 						//噴火
 						for(int i=0; i<10; i++){
-							EnemyBullet b = EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd, i*18));
+							EnemyBullet b = EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd*1.5, i*18));
 							b.setAccelerate(1, 270);
 						}
 						//瞬間移動
 						this.position = new Vector2(Mathf.randomRange(0, Global.MainFrame.width-this.radius), Mathf.randomRange(0, 100));
 						count = 0;
-						jyanken = (jyanken+2)%3;
 					}
 				}
 			}
