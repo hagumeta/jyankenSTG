@@ -131,7 +131,7 @@ public class Player extends MovingFigure{
 			this.setPosition(-this.radius, this.position.y);
 		}
 		if(this.centerPos.x > Global.MainFrame.width){
-			this.setPosition(Global.MainFrame.width+this.radius, this.position.y);
+			this.setPosition(Global.MainFrame.width-this.radius, this.position.y);
 		}
 		if(this.centerPos.y < 0){
 			this.setPosition(this.radius, this.radius);

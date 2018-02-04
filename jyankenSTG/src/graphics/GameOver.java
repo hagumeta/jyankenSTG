@@ -9,23 +9,33 @@ import kusoelmo.Title;
 
 
 public class GameOver extends MovingFigure {
+	private int count;
 	public GameOver(){
 		this.shape = new Text("GAME OVER \n ", Color.red);
 		this.setPosition(0, 0);
 		((Text)this.shape).setFontSize(50);
+		count = 0;
 	}
 
 	//Xキーでリトライ
 	//Cキーでタイトルに戻る
 	public void updateAdd(){
-		if(Global.keyInput[6]){//C
-			Global.MainFrame.end();
-			Test_Title.sceneMove(new Title());
-		}else{
-			if(Global.keyInput[5]){//X
+		if(count >= 91) {
+			if(Global.keyInput[6]){//C
 				Global.MainFrame.end();
-				Test_Title.sceneMove(new Game());
+				Test_Title.sceneMove(new Title());
+			}else{
+				if(Global.keyInput[5]){//X
+					Global.MainFrame.end();
+					Test_Title.sceneMove(new Game());
+				}
 			}
+		}else {
+			count++;
+		}
+		
+		if(count == 90){
+			this.shape = new Text("RETRY:X  MODE:C", Color.red);
 		}
 	}
 }

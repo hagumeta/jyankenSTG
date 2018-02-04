@@ -44,13 +44,13 @@ public class PlayerBullet extends JyankenBullet{
 			this.delete();
 			eb.delete();
 			break;
-		case 1:			//敵弾の勝ち
-			//自機弾を削除
-			this.delete();
-			break;
-		case 2:			//自機弾の勝ち
+		case 1:			//自機弾の勝ち
 			//敵弾を削除
 			eb.delete();
+			break;
+		case 2:			//敵弾の勝ち
+			//自機弾を削除
+			this.delete();
 			break;
 		}
 	}

@@ -102,7 +102,6 @@ public class Title extends HDrawingFrame{
 		}else if(Global.keyInput[4]){//Z
 			end();
 			Global.difficulty = cursor;
-			System.out.println("level : " + cursor);
 			Test_Title.sceneMove(new Game());
 			//タイトルシーンの更新を止める
 			super.end();

@@ -1,7 +1,8 @@
 package bullet;
 
 
-import java.awt.Color;
+import graphics.Global;
+import graphics.frames.figures.shapes.Image;
 
 public class JyankenBullet extends Bullet {
 	public int jyanken;//じゃんけん属性
@@ -14,7 +15,7 @@ public class JyankenBullet extends Bullet {
 	public JyankenBullet(int jyanken){
 		super();
 		this.switchJyanken(jyanken);
-		}
+	}
 
 	///じゃんけん属性の変更
 	public void switchJyanken(int jyanken){
@@ -23,16 +24,16 @@ public class JyankenBullet extends Bullet {
 		//じゃんけん属性によって見た目を変える
 		switch(jyanken){
 		case 0://グー
-			//this.shape = (Shape)(new Image(Global.imageLock));
-			this.shape.color = Color.red;
+			this.shape = new Image(Global.imageLock);
+			//this.shape.color = Color.red;
 			break;
 		case 1://チョキ
-			//this.shape = (Shape)(new Image(Global.imageScissors));
-			this.shape.color = Color.blue;
+			this.shape = new Image(Global.imageScissors);
+			//this.shape.color = Color.blue;
 			break;
 		case 2://パー
-			//this.shape = (Shape)(new Image(Global.imagePaper));
-			this.shape.color = Color.green;
+			this.shape = new Image(Global.imagePaper);
+			//this.shape.color = Color.green;
 		}
 
 	}

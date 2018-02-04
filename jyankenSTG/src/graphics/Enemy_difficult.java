@@ -41,7 +41,7 @@ public class Enemy_difficult extends Enemy {
 				Vector2 vec = new Vector2(this.centerPos.x+Mathf.randomRange(-30, 30), this.centerPos.y+Mathf.randomRange(-30, 30));
 				EnemyBullet.shot(jyanken, vec, new Vector2(spd, dir+Mathf.randomRange(-90, 90)));
 				if(count % 10 == 0){
-					EnemyBullet.shot((jyanken+1)%3, vec, new Vector2(spd, dir+Mathf.randomRange(-90, 90)));
+					EnemyBullet.shot((jyanken+2)%3, vec, new Vector2(spd, dir+Mathf.randomRange(-90, 90)));
 				}
 				if(count % 100 == 0){
 					//瞬間移動
