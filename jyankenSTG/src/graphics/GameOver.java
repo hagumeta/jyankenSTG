@@ -10,7 +10,7 @@ import kusoelmo.Title;
 
 public class GameOver extends MovingFigure {
 	public GameOver(){
-		this.shape = new Text("GAME OVER", Color.red);
+		this.shape = new Text("GAME OVER \n ", Color.red);
 		this.setPosition(0, 0);
 		((Text)this.shape).setFontSize(50);
 	}
@@ -23,6 +23,7 @@ public class GameOver extends MovingFigure {
 			Test_Title.sceneMove(new Title());
 		}else{
 			if(Global.keyInput[5]){//X
+				Global.MainFrame.end();
 				Test_Title.sceneMove(new Game());
 			}
 		}

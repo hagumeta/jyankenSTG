@@ -52,9 +52,8 @@ public class Title extends HDrawingFrame{
 		logo.setHorizontalAlignment(JLabel.CENTER);
 		add(logo);
 
-		Global.nowGameScene = this;
 		add(panel);
-		start();
+		this.start();
 	}
 
 	private void cursorUp() {
@@ -95,6 +94,7 @@ public class Title extends HDrawingFrame{
 
 	@Override
 	protected void update() {
+		//System.out.println(this);
 		if(Global.keyInput[0]){//up
 			cursorUp();
 		}else if(Global.keyInput[1]){//down
