@@ -1,19 +1,20 @@
 package graphics;
 
-import java.awt.Color;
-
 import graphics.frames.figures.MovingFigure;
-import graphics.frames.figures.shapes.Text;
+import graphics.frames.figures.shapes.HPbar;
 
+/*敵のHPを取得して描画するFigure
+ * HPバーを表示する
+ * */
 public class Enemy_HP extends MovingFigure {
-	//敵のHPを取得して描画するFigure.
-	public Enemy_HP(){
-		this.shape = new Text("", Color.BLACK);
-		this.setPosition(0, 0);
+
+	public Enemy_HP(int enemyMaxHP){
+		super();
+		this.shape = new HPbar(enemyMaxHP);
 	}
 
 	//ボスのHPを更新して描画
 	public void updateAdd(){
-		((Text)this.shape).text = Integer.toString(Global.Boss.HP);
+		((HPbar)this.shape).setHP(Global.Boss.HP);
 	}
 }

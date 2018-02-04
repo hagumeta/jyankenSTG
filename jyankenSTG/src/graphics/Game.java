@@ -16,8 +16,10 @@ public class Game extends JPanel{
 
 		//敵の用意
 		Enemy.create();
-
-		Figure.create(new Player(), 300, 600);
+		//プレイヤーの用意
+		Figure.create(new Player(), 500, 600);
+		//じゃんけんカウンターの用意
+		Global.jyankenCounter = (JyankenCounter)Figure.create(new JyankenCounter());
 
 		///HShapesFrameをフレームウインドウにアタッチ
 		add(hsf, BorderLayout.CENTER);
@@ -26,6 +28,5 @@ public class Game extends JPanel{
 		GameInitialize.init();
 
 		hsf.start();//スタート
-		//Global.nowGameScene = this;
 	}
 }

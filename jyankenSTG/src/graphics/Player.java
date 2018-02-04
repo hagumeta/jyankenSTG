@@ -98,8 +98,8 @@ public class Player extends MovingFigure{
 	/*自機の死亡*/
 	private void death(){
 		this.enable = false;
-		//ゲームオーバーと表示する
-		Figure.create(new GameOver(), new Vector2(400, 200));
+		//ゲームオーバー
+		Result.gameOver();
 	}
 
 

@@ -25,6 +25,8 @@ public class Global {
 	public static int difficulty=0;
 
 
+	/*じゃんけんカウンター(一回の挑戦で何回じゃんけんしたか)*/
+	public static JyankenCounter jyankenCounter = null;
 
 	/*キーボードの入力*/
 	public static boolean[] keyInput = new boolean[7];
@@ -64,7 +66,7 @@ public class Global {
 	}
 
 	/*敵弾の集合(当たり判定の処理用)*/
-	public static EnemyBullet EnemyBullets[] = new EnemyBullet[200];
+	public static EnemyBullet EnemyBullets[] = new EnemyBullet[250];//250個用意
 
 	/*ボス敵(当たり判定の処理用)*/
 	public static Enemy Boss;

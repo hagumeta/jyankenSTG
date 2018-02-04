@@ -28,11 +28,19 @@ public class Figure {
 		//一応figureを返す(役立ちそう)
 		return fig;
 	}
+	public static Figure create(Figure fig){
+		//現在稼働中のFrameに入れる
+		Global.MainFrame.add(fig);
+		//figureを返す
+		return fig;
+	}
 
 	/*インスタンスFigureの削除*/
 	public static void destroy(Figure fig){
 		//現在稼働中のFrameから消す.
 		Global.MainFrame.remove(fig);
+		//存在しない扱い
+		fig.enable = false;
 	}
 
 

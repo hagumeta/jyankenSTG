@@ -10,19 +10,22 @@ import graphics.Vector2;
  */
 abstract public class Shape implements Drawable{
 
-	public Color color = Color.black;//色
-	public boolean filled = true;//塗りつぶすか
-	public boolean visible = true;//可視性かどうか
+	public Color color;//色
+	public boolean filled;//塗りつぶすか
+	public boolean visible;//可視性かどうか
 
 	/*コンストラクタ*/
 	public Shape(Color color, boolean filled){
 		this.color = color;
 		this.filled = filled;
+		this.visible = true;
 	}
 	public Shape(Color color){
 		this(color, false);
 	}
-	public Shape(){}
+	public Shape(){
+		this(Color.BLACK, false);
+	}
 
 	//-------------/*以下finalメソッド*/-------------//
 	/*描画*/
