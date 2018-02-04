@@ -34,16 +34,17 @@ public class Test_Title extends JFrame implements KeyListener{
 		frame.add(title, BorderLayout.CENTER);
 		frame.setVisible(true);
 		frame.pack();
-		
+
 		Global.nowGameScene = title;
 	}
 
 	/*シーン移動*/
 	public static void sceneMove(JPanel p) {
 		frame.remove(Global.nowGameScene);
+		//frame.remove(title);
 		frame.add(p);
-		Global.nowGameScene = p;
 		frame.pack();
+		Global.nowGameScene = p;
 	}
 
 	//キー入力の受付
