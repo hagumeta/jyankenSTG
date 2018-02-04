@@ -100,6 +100,7 @@ public class Title extends HDrawingFrame{
 		}else if(Global.keyInput[1]){//down
 			cursorDown();
 		}else if(Global.keyInput[4]){//Z
+			end();
 			Global.difficulty = cursor;
 			System.out.println(cursor);
 			Test_Title.sceneMove(new Game());

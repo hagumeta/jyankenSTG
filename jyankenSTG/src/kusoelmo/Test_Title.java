@@ -40,10 +40,10 @@ public class Test_Title extends JFrame implements KeyListener{
 
 	/*シーン移動*/
 	public static void sceneMove(JPanel p) {
-		//frame.remove(Global.nowGameScene);
-		frame.remove(title);
+		frame.remove(Global.nowGameScene);
 		frame.add(p);
 		Global.nowGameScene = p;
+		frame.pack();
 	}
 
 	//キー入力の受付

@@ -26,6 +26,6 @@ public class Game extends JPanel{
 		GameInitialize.init();
 
 		hsf.start();//スタート
-		Global.nowGameScene = this;
+		//Global.nowGameScene = this;
 	}
 }
