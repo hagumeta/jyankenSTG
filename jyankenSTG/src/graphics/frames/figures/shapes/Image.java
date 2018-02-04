@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 
 import graphics.Vector2;
 
+/*画像を描画できるShape*/
 public class Image extends Shape{
 
 	public BufferedImage image;//画像

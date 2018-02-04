@@ -5,7 +5,9 @@ import java.awt.Graphics;
 
 import graphics.Vector2;
 
-/*swingで描画する形(色等含む)を定義している抽象クラス.*/
+/*swingで描画する形(色等含む)を定義している抽象クラス.
+ * Figureの描画方法にShapeが用いられる
+ */
 abstract public class Shape implements Drawable{
 
 	public Color color = Color.black;//色

@@ -10,8 +10,6 @@ import graphics.Global;
 
 public class Test_Title extends JFrame implements KeyListener{
 
-	private static Title title;
-
 	public Test_Title(String caption){
 		super(caption);
 		super.requestFocusInWindow();
@@ -28,20 +26,21 @@ public class Test_Title extends JFrame implements KeyListener{
 		frame = new Test_Title("fuga");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		title = new Title();
+		//タイトルの生成
+		Title title = new Title();
 
 		///Titleをフレームウインドウにアタッチ
 		frame.add(title, BorderLayout.CENTER);
 		frame.setVisible(true);
 		frame.pack();
 
+		//現在のシーンはtitle
 		Global.nowGameScene = title;
 	}
 
 	/*シーン移動*/
 	public static void sceneMove(JPanel p) {
 		frame.remove(Global.nowGameScene);
-		//frame.remove(title);
 		frame.add(p);
 		frame.pack();
 		Global.nowGameScene = p;
