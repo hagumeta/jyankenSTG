@@ -6,7 +6,7 @@ import bullet.EnemyBullet;
  * 拡散攻撃で攻撃してくる
  * */
 public class Enemy_easy extends Enemy {
-	private int jyankenChange = 0;
+	private int jyankenChange = Mathf.randomRange(0, 2);
 	public int count = 0;//ショット間隔
 	public double spd = 5.0;//敵弾のスピード
 	public int direction = 0;//敵弾の打つ方向

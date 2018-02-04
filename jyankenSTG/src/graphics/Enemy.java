@@ -75,7 +75,9 @@ public class Enemy extends Bullet {
 			break;
 		case 3://エンドレス(未実装)
 			Result.comingSoon();
-
+			System.out.println(
+					"☆Endressモード☆\n"
+					+ "すまんなwwwwwwwwwwww");
 		}
 	}
 

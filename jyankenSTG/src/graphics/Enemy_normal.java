@@ -3,7 +3,7 @@ package graphics;
 import bullet.EnemyBullet;
 
 public class Enemy_normal extends Enemy {
-	private int jyankenChange = 0;
+	private int jyankenChange = Mathf.randomRange(0, 2);;
 	public int count = 0;//ショット間隔
 	public double spd = 5.0;//敵弾のスピード
 	public int direction = 0;//敵弾の打つ方向
@@ -17,7 +17,7 @@ public class Enemy_normal extends Enemy {
 	}
 	public void behave(){
 		count++;
-		if(count % 35 == 0){
+		if(count % 40 == 0){
 			//自機狙い扇弾
 			int dir = Vector2.getDirection(this.centerPos, Global.player.position);//自機狙い
 			for(int i=0; i<13; i++){
@@ -25,7 +25,7 @@ public class Enemy_normal extends Enemy {
 			}
 			if(HP > 25){
 				//じゃんけん属性変更
-				jyankenChange ++;
+				jyankenChange += 2;
 				jyankenChange %= 3;
 			}
 
@@ -34,16 +34,16 @@ public class Enemy_normal extends Enemy {
 				for(int i=0; i<2; i++){
 					EnemyBullet.shot(jyankenChange, this.centerPos, new Vector2(spd*2, dir-10+20*i));
 				}
-				EnemyBullet.shot((jyankenChange+1)%3, this.centerPos, new Vector2(spd*1.2, dir+Mathf.randomRange(-5, 5)));
+				EnemyBullet.shot((jyankenChange+2)%3, this.centerPos, new Vector2(spd*1.2, dir+Mathf.randomRange(-5, 5)));
 
 				if(HP <= 10){
 					//加速
 					count++;
 				}
 
-				if(count >= 105){
+				if(count >= 120){
 					//じゃんけん属性変更
-					jyankenChange ++;
+					jyankenChange +=2;
 					jyankenChange %= 3;
 				}
 			}

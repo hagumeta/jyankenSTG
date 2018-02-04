@@ -7,7 +7,7 @@ public class Enemy_difficult extends Enemy {
 	public int count = 0;//ショット間隔
 	public double spd = 6.0;//敵弾のスピード
 	public int direction = 0;//敵弾の打つ方向
-	public int jyanken = 0;
+	public int jyanken = Mathf.randomRange(0, 2);;
 
 	public Enemy_difficult(){
 		super(50);
