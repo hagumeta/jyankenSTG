@@ -123,7 +123,6 @@ public class Title extends HDrawingFrame{
 		}else {
 			count = 10;
 		}
-		//常にフレームにキー対象を向ける
 
 		if(colorcnt <= 50) {
 			colorcnt++;

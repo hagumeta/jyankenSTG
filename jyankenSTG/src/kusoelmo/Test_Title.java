@@ -19,12 +19,12 @@ public class Test_Title extends JFrame implements KeyListener{
 
 	public static Test_Title frame;
 	public static void main(String args[]){
-		
+
 		/*グローバル変数初期化*/
 		Global.setup();
 
 		//フレームの用意
-		frame = new Test_Title("fuga");
+		frame = new Test_Title("JYANKEN SHOOTING");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//タイトルの生成

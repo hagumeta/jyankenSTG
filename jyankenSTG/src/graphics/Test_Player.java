@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 import graphics.frames.HFigureFrame;
 import graphics.frames.figures.Figure;
-
+/*デバック用*/
 public class Test_Player extends JFrame implements KeyListener{
 
 	public Test_Player(String caption){
