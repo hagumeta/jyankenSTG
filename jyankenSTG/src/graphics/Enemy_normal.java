@@ -11,7 +11,7 @@ public class Enemy_normal extends Enemy {
 	public Enemy_normal(){
 		super(35);
 		System.out.println(
-				"☆Noral☆\n相手も作戦を考えて打ってきているぞ！\n相手の手を見て打つ属性を考えよう！\n"
+				"\n\n☆Noral☆\n相手も作戦を考えて打ってきているぞ！\n相手の手を見て打つ属性を考えよう！\n"
 				+ "移動して攻撃するから深追いするのは危険だぞ！"
 				);
 	}
@@ -36,16 +36,18 @@ public class Enemy_normal extends Enemy {
 				}
 				EnemyBullet.shot((jyankenChange+2)%3, this.centerPos, new Vector2(spd*1.2, dir+Mathf.randomRange(-5, 5)));
 
+				if(count % 120 == 0){
+					//じゃんけん属性変更
+					jyankenChange +=2;
+					jyankenChange %= 3;
+				}
+
 				if(HP <= 10){
 					//加速
 					count++;
 				}
 
-				if(count >= 120){
-					//じゃんけん属性変更
-					jyankenChange +=2;
-					jyankenChange %= 3;
-				}
+
 			}
 		}
 

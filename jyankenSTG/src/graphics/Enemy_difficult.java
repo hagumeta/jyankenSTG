@@ -12,7 +12,7 @@ public class Enemy_difficult extends Enemy {
 	public Enemy_difficult(){
 		super(50);
 		System.out.println(
-				"☆Hard☆\nここに挑戦するとはお主強者ですな!\nいままでの成果を見せてやれ！\n"
+				"\n\n☆Hard☆\nここに挑戦するとはお主強者ですな!\nいままでの成果を見せてやれ！\n"
 				+ "攻略のヒントは今一番有利な属性を見分けることだ！\n"
 				+ "頑張れよ！"
 				);
@@ -72,7 +72,7 @@ public class Enemy_difficult extends Enemy {
 						jyanken = (jyanken+2)%3;
 					}
 
-					if(count >= 99){
+					if(count >= 124){
 						//噴火
 						for(int i=0; i<10; i++){
 							EnemyBullet b = EnemyBullet.shot(jyanken, this.centerPos, new Vector2(spd*1.5, i*18));
@@ -80,7 +80,7 @@ public class Enemy_difficult extends Enemy {
 						}
 						//瞬間移動
 						this.position = new Vector2(Mathf.randomRange(0, Global.MainFrame.width-this.radius), Mathf.randomRange(0, 100));
-						count = 0;
+						count = -5;
 					}
 				}
 			}

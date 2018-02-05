@@ -14,7 +14,7 @@ public class Enemy_easy extends Enemy {
 	public Enemy_easy(){
 		super(30);
 		System.out.println(
-				"☆Easy☆\nじゃんけん属性の相性を考えて弾を打つのが勝利への近道！\n"
+				"\n\n☆Easy☆\nじゃんけん属性の相性を考えて弾を打つのが勝利への近道！\n"
 				+ "やみくもに打っても打ち消されるだけだから気を付けて!"
 				);
 	}

@@ -12,7 +12,7 @@ import graphics.frames.figures.shapes.Circle;
 public class EnemyBullet extends JyankenBullet {
 	public EnemyBullet(int jyanken){
 		super(jyanken);
-		this.radius = 25;
+		this.radius = 23;
 		this.setPosition(0,0);
 		this.shape = new Circle(this.radius, Color.BLACK, true);
 	}

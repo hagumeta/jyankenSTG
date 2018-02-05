@@ -34,9 +34,13 @@ public class HPbar extends Shape{
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(0, 0, Global.MainFrame.width, 70);
 
+		//HPバー下地の描画
+		g.setColor(Color.black);
+		g.fillRect(70, 7, maxLength, 55);
+
 		//HPバーの描画
 		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(70, 5, width, 60);
+		g.fillRect(70, 10, width, 50);
 
 		//HPの数値描画
 		g.setFont(font);
@@ -46,7 +50,7 @@ public class HPbar extends Shape{
 		//遅れバーがあれば描画
 		if(delay){
 			g.setColor(Color.MAGENTA);
-			g.fillRect(delayX, 5, delayWidth, 60);
+			g.fillRect(delayX, 10, delayWidth, 50);
 			//だんだん短くする
 			delayWidth -= 2;
 			if(delayWidth <= 0){

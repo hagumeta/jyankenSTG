@@ -18,12 +18,12 @@ public class JyankenCounter extends Figure{
 	public JyankenCounter(){
 		this.setPosition(5, Global.MainFrame.height-20);
 		jyankenCount = 0;//リセット
-		this.shape = (Shape)(new Text("", Color.BLACK, new Font(Font.SANS_SERIF, Font.PLAIN, 15)));
+		this.shape = (Shape)(new Text("", Color.red, new Font(Font.SANS_SERIF, Font.PLAIN, 20)));
 	}
 
 	//じゃんけんカウントを足して更新
 	public void addCount(){
 		jyankenCount++;
-		((Text)this.shape).text = "Jyanken:"+jyankenCount;
+		((Text)this.shape).text = "Jyanken×"+jyankenCount;
 	}
 }
