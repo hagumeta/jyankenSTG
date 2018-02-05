@@ -1,6 +1,5 @@
 package graphics.frames;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -43,10 +42,11 @@ public class GameFrame extends HFigureFrame {
 			//ノーマルモード(画像を描画) 結構かくつく
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(this.background, null, 0, 0);
-		}else{
+		}
+		/*else{
 			//パフォーマンスモード(画像を用いない) ぬるぬる
 			g.setColor(Color.CYAN);
 			g.fillRect(0, 0, this.width, this.height);
-		}
+		}*/
 	}
 }

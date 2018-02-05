@@ -54,12 +54,12 @@ public class Title extends HDrawingFrame{
 
 		setBackground(Global.imageTitle);
 		panel1.setOpaque(false);
-		logo = new JLabel("じゃんけんシューティング");
+		logo = new JLabel("JYANKEN STG");
 		logo.setFont(new Font("Gothic", Font.BOLD, 40));
-		logo.setForeground(Color.MAGENTA);
+		logo.setForeground(Color.CYAN);
 		logo.setHorizontalAlignment(JLabel.CENTER);
 		panel1.add(logo);
-		label2 = new JLabel("矢印キー↑↓で選択　Zで開始");
+		label2 = new JLabel("SELECT:↑↓   START:Z");
 		label2.setFont(new Font("Gothic", Font.PLAIN, 24));
 		label2.setHorizontalAlignment(JLabel.CENTER);
 		panel1.add(label2);

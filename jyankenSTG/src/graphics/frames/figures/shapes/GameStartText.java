@@ -24,14 +24,23 @@ public class GameStartText extends Shape {
 	private int Time0;
 	private int Time1;
 	private int Time2;
+	private int Time3;
+	private int Time4;
+	private int Time5;
+
+	//影用のオフセット
+	private double offsetX;
+	private double offsetY;
 
 	//カウンタ
 	private int count = 0;
 
 	private int paturn = 0;//現在のパターン
 	/* 0 左右から出てくる
-	 * 1 合わさる
-	 * 2 左右に消える
+	 * 1 オフセット
+	 * 2 待機
+	 * 3 オフセット戻す
+	 * 4 左右に消える
 	 */
 
 	/*コンストラクタ*/
@@ -41,17 +50,24 @@ public class GameStartText extends Shape {
 		this.color = Color.GREEN;
 
 		this.filled = false;
-		this.Time0 = time/4;
-		this.Time1 = time*1/2;
-		this.Time2 = time/4;
+		this.Time0 = time/5;
+		this.Time1 = time/10;
+		this.Time2 = time/4;//待機
+		this.Time3 = time/10;
+		this.Time4 = time/10;//オフセット戻す
+
+		this.offsetX = 0;
+		this.offsetY = 0;
 	}
 
 	@Override
 	public void drawSelf(Graphics g, Vector2 pos) {
+		g.setFont(font);
+
 		switch(paturn){
 		case 0://左右からくるところ
-			int a = 800/Time0;
-			lX += a;
+			double a = 800/Time0;
+			lX -= a;
 			rX -= a;
 			if(count >= Time0){
 				rX = centerX;
@@ -61,17 +77,43 @@ public class GameStartText extends Shape {
 			}
 			break;
 
-		case 1://合わさって待機
+		case 1://オフセットを出しつつ影描画
+			double b = 8.0/Time1;
+			this.offsetX += b;
+			this.offsetY += b;
+			//影描画
+			this.drawShadow(g);
 			if(count >= Time1){
 				paturn = 2;
 				count = 0;
 			}
 			break;
 
-		case 2://左右に消える
-			int b = 1000/Time2;
-			lX += b;
-			rX -= b;
+		case 2://待機
+			if(count >= Time2){
+				paturn = 3;
+				count = 0;
+			}
+			//影描画
+			this.drawShadow(g);
+			break;
+
+		case 3://オフセット戻す
+			double c = 8.0/Time3;
+			this.offsetX -= c;
+			this.offsetY -= c;
+			//影描画
+			this.drawShadow(g);
+			if(count >= Time3){
+				paturn = 4;
+				count = 0;
+			}
+			break;
+
+		case 4://左右に消える
+			int d = 1000/Time2;
+			lX += d;
+			rX -= d;
 			if(count >= Time2){
 				//自身を見えなくする
 				this.visible = false;
@@ -81,10 +123,15 @@ public class GameStartText extends Shape {
 		count++;
 
 		/*文字の描画*/
-		g.setFont(font);
+		g.setColor(this.color);
 		g.drawString("GAME START!!", lX, 350);
 		g.drawString("GAME START!!", rX, 350);
 
+	}
+	/*影の描画*/
+	private void drawShadow(Graphics g){
+		g.setColor(Color.BLACK);
+		g.drawString("GAME START!!", lX+(int)offsetX, 350+(int)offsetY);
 	}
 
 	@Override
