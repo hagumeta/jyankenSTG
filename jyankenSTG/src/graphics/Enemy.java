@@ -5,7 +5,6 @@ import java.awt.Color;
 import bullet.Bullet;
 import graphics.frames.figures.Figure;
 import graphics.frames.figures.shapes.Circle;
-import graphics.frames.figures.shapes.Text;
 
 public class Enemy extends Bullet {
 
@@ -36,8 +35,7 @@ public class Enemy extends Bullet {
 		Global.Boss = this;
 
 		//スタートの文字を作る
-		startText = (FigText)Figure.create(new FigText("START！！", Color.CYAN), new Vector2(200, 400));
-		((Text)startText.shape).setFontSize(100);
+		Figure.create(new GameStart(countDown));
 		}
 
 
@@ -52,7 +50,6 @@ public class Enemy extends Bullet {
 			if(countDown <= 0){
 				//スタート
 				start = true;
-				Figure.destroy(startText);
 			}
 		}
 	}

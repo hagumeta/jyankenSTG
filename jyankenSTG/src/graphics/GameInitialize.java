@@ -9,11 +9,7 @@ public class GameInitialize {
 	public static void init(){
 		///敵弾の準備
 		loadEnemyBullets();
-
-		//グローバル変数初期化
-		Global.setup();
 	}
-
 
 	//敵弾の準備を行う.
 	private static void loadEnemyBullets(){

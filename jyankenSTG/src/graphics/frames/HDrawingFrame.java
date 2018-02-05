@@ -17,7 +17,7 @@ abstract public class HDrawingFrame extends JPanel implements Runnable{
 	public int width;//横幅
 	public int height;//縦幅
 
-	public BufferedImage background;//背景
+	public BufferedImage background;//背景画像
 
 	private boolean enable;//更新, 描画が有効か
 	private boolean activate;//falseにすると描画更新が終わる(startで再開できるが)

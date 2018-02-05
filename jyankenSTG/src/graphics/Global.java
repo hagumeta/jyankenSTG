@@ -39,6 +39,8 @@ public class Global {
 	public static BufferedImage imageScissors;//チョキ
 	public static BufferedImage imagePaper;//	パー
 
+	public static BufferedImage gameBackground;//ゲームの背景画像
+
 	/*変数初期化*/
 	public static void setup(){
 		///キーボードの初期化
@@ -91,6 +93,12 @@ public class Global {
 		try {
 			//パー
 			imagePaper = ImageIO.read(new File("src/pa.png"));
+		} catch (IOException e) {
+			System.out.println("画像ロード失敗!");
+		}
+		try {
+			//背景画像
+			gameBackground = ImageIO.read(new File("src/back.png"));
 		} catch (IOException e) {
 			System.out.println("画像ロード失敗!");
 		}

@@ -7,7 +7,7 @@ import graphics.Vector2;
 public class PlayerBullet extends JyankenBullet{
 	public PlayerBullet(int jyanken){
 		super(jyanken);
-		this.radius = 10;
+		this.radius = 15;
 	}
 
 	protected void updateAdd(){

@@ -34,12 +34,14 @@ public class HFigureFrame extends HDrawingFrame{
 	protected void update(){}
 	protected void init(){}
 
-
+	/*背景の描画*/
+	protected void drawBackground(Graphics g){}
 
 	//---------------/*以下finalメソッド*/---------------//
 
 	/*格納されたshapeをそれぞれ描画*/
 	final protected void draw(Graphics g){
+		this.drawBackground(g);
 		///各shapeの描画/更新(Updatableであれば)
 		for(int i=0; i<figures.size(); i++){
 			Figure fig = figures.get(i);

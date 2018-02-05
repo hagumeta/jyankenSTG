@@ -41,6 +41,7 @@ public class Title extends HDrawingFrame{
 		for(int i = 0; i < 4; i++) {
 			mode[i].setFont(new Font("Serif", Font.BOLD, 28));
 			mode[i].setAlignmentX((JComponent.CENTER_ALIGNMENT));
+			mode[i].setEnabled(false);
 			panel.add(mode[i]);
 		}
 
@@ -109,7 +110,7 @@ public class Title extends HDrawingFrame{
 			count = 10;
 		}
 		//常にフレームにキー対象を向ける
-		
+
 	}
 
 	@Override
