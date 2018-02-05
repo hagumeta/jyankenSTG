@@ -30,7 +30,7 @@ public class Title extends HDrawingFrame{
 		mode[2] = new JLabel("CHALLENGE MODE (HARD)");
 		mode[3] = new JLabel("ENDLESS MODE");
 		panel1 = new JPanel();
-		panel1.setLayout(new GridLayout(2, 1));	
+		panel1.setLayout(new GridLayout(2, 1));
 		panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(4, 1));
 		//setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -44,13 +44,15 @@ public class Title extends HDrawingFrame{
 		LineBorder border = new LineBorder(Color.BLACK, 1, true);
 		for(int i = 0; i < 4; i++) {
 			mode[i].setFont(new Font("Serif", Font.BOLD, 28));
+			mode[i].setForeground(Color.BLACK);
 			mode[i].setHorizontalAlignment(JLabel.CENTER);
 			mode[i].setOpaque(true);
 			mode[i].setBorder(border);
 			panel2.add(mode[i]);
 		}
 
-		panel1.setBackground(Color.BLACK);
+		setBackground(Global.imageTitle);
+		panel1.setOpaque(false);
 		logo = new JLabel("じゃんけんシューティング");
 		logo.setFont(new Font("Gothic", Font.BOLD, 40));
 		logo.setForeground(Color.MAGENTA);
@@ -60,7 +62,7 @@ public class Title extends HDrawingFrame{
 		label2.setFont(new Font("Gothic", Font.PLAIN, 24));
 		label2.setHorizontalAlignment(JLabel.CENTER);
 		panel1.add(label2);
-		
+
 		add(panel1);
 		add(panel2);
 		this.start();
@@ -119,14 +121,13 @@ public class Title extends HDrawingFrame{
 			count = 10;
 		}
 		//常にフレームにキー対象を向ける
-		
+
 		if(colorcnt <= 50) {
 			colorcnt++;
 		}else {
 			colorcnt = 0;
 		}
 		int x = 255 - Math.abs(255 - colorcnt * 10);
-		System.out.println(x);
 		label2.setForeground(new Color(x, x, x));
 	}
 

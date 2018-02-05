@@ -38,6 +38,7 @@ public class Global {
 	public static BufferedImage imageLock;//グー
 	public static BufferedImage imageScissors;//チョキ
 	public static BufferedImage imagePaper;//	パー
+	public static BufferedImage imageTitle;
 
 	/*変数初期化*/
 	public static void setup(){
@@ -91,6 +92,11 @@ public class Global {
 		try {
 			//パー
 			imagePaper = ImageIO.read(new File("src/pa.png"));
+		} catch (IOException e) {
+			System.out.println("画像ロード失敗!");
+		}		try {
+			//title
+			imageTitle = ImageIO.read(new File("src/TitleBack.png"));
 		} catch (IOException e) {
 			System.out.println("画像ロード失敗!");
 		}
