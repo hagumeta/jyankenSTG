@@ -42,7 +42,7 @@ public class GameStartText extends Shape {
 
 		this.filled = false;
 		this.Time0 = time/4;
-		this.Time1 = time*3/4;
+		this.Time1 = time*1/2;
 		this.Time2 = time/4;
 	}
 

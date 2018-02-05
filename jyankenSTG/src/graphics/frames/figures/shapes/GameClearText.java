@@ -26,10 +26,10 @@ public class GameClearText extends Shape {
 		g.setFont(fontCap);
 		g.setColor(Color.BLACK);//影の描画
 		g.drawString("GAMECLEAR!!", pos.x+7, pos.y+7);
-		g.drawString("TIME : " + (float)clearTime + "S", pos.x+7, pos.y+107);
+		g.drawString("TIME : " + (float)clearTime + " S", pos.x+7, pos.y+107);
 		g.setColor(this.color);
 		g.drawString("GAMECLEAR!!", pos.x, pos.y);
-		g.drawString("TIME : " + (float)clearTime + "S", pos.x, pos.y+100);
+		g.drawString("TIME : " + (float)clearTime + " S", pos.x, pos.y+100);
 
 
 		//メニュー描画

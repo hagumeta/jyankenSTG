@@ -89,9 +89,8 @@ public class Title extends HDrawingFrame{
 		}
 	}
 
-	@Override
-	protected void init() {
-	}
+	@Override//使わない
+	protected void init() {}
 
 	@Override
 	protected void update() {
@@ -101,8 +100,11 @@ public class Title extends HDrawingFrame{
 		}else if(Global.keyInput[1]){//down
 			cursorDown();
 		}else if(Global.keyInput[4]){//Z
+			//自身の設定
 			end();
+			//難易度設定
 			Global.difficulty = cursor;
+			//Global.peformanceMode = hoooooooooooooooooooooooooooooooooooooooooooooo;
 			Test_Title.sceneMove(new Game());
 			//タイトルシーンの更新を止める
 			super.end();
@@ -113,10 +115,7 @@ public class Title extends HDrawingFrame{
 
 	}
 
-	@Override
-	protected void draw(Graphics g) {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
+	@Override//使わない
+	protected void draw(Graphics g) {}
 
 }

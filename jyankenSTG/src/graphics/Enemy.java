@@ -12,7 +12,7 @@ public class Enemy extends Bullet {
 
 	public int timeCount = 0;//タイムカウント
 
-	public int countDown = 100;//スタートまでの時間
+	public int countDown = 80;//スタートまでの時間
 	public boolean start = false;//始まってるかどうか
 	private FigText startText;//スタート文字
 

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
+import graphics.frames.GameFrame;
 import graphics.frames.figures.Figure;
 
 /*ゲームシーン*/

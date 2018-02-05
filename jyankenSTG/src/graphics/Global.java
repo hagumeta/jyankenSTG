@@ -24,6 +24,9 @@ public class Global {
 	 * */
 	public static int difficulty=0;
 
+	/*パフォーマンスモード(背景の描画をしないとか)*/
+	public static boolean peformanceMode;
+
 
 	/*じゃんけんカウンター(一回の挑戦で何回じゃんけんしたか)*/
 	public static JyankenCounter jyankenCounter = null;
@@ -47,6 +50,9 @@ public class Global {
 		initKey();
 		///画像のロード
 		loadImages();
+
+		///パフォーマンスモードはoffで
+		Global.peformanceMode = true;
 	}
 
 
