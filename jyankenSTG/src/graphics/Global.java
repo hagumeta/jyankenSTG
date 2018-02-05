@@ -41,6 +41,7 @@ public class Global {
 	public static BufferedImage imageLock;//グー
 	public static BufferedImage imageScissors;//チョキ
 	public static BufferedImage imagePaper;//	パー
+	public static BufferedImage imageTitle;
 
 	public static BufferedImage gameBackground;//ゲームの背景画像
 
@@ -99,6 +100,11 @@ public class Global {
 		try {
 			//パー
 			imagePaper = ImageIO.read(new File("src/pa.png"));
+		} catch (IOException e) {
+			System.out.println("画像ロード失敗!");
+		}		try {
+			//title
+			imageTitle = ImageIO.read(new File("src/TitleBack.png"));
 		} catch (IOException e) {
 			System.out.println("画像ロード失敗!");
 		}

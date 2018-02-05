@@ -4,10 +4,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import graphics.Game;
 import graphics.Global;
@@ -16,20 +15,24 @@ import graphics.frames.HDrawingFrame;
 
 public class Title extends HDrawingFrame{
 	private int cursor;
-	private JButton mode[];
-	private JPanel panel;
+	private JLabel logo, label2;
+	private JLabel mode[];
+	private JPanel panel1, panel2;
 	private int count = 10;
+	private int colorcnt = 0;
 
 	public Title() {
 		super(1000, 750, 30);
 		cursor = 0;
-		mode = new JButton[4];
-		mode[0] = new JButton("CHALLENGE MODE (EASY)");
-		mode[1] = new JButton("CHALLENGE MODE (NORMAL)");
-		mode[2] = new JButton("CHALLENGE MODE (HARD)");
-		mode[3] = new JButton("ENDLESS MODE");
-		panel = new JPanel();
-		panel.setLayout(new GridLayout(4, 1));
+		mode = new JLabel[4];
+		mode[0] = new JLabel("CHALLENGE MODE (EASY)");
+		mode[1] = new JLabel("CHALLENGE MODE (NORMAL)");
+		mode[2] = new JLabel("CHALLENGE MODE (HARD)");
+		mode[3] = new JLabel("ENDLESS MODE");
+		panel1 = new JPanel();
+		panel1.setLayout(new GridLayout(2, 1));
+		panel2 = new JPanel();
+		panel2.setLayout(new GridLayout(4, 1));
 		//setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setLayout(new GridLayout(2, 1));
 
@@ -38,22 +41,31 @@ public class Title extends HDrawingFrame{
 			mode[i].setBackground(Color.ORANGE);
 		}
 
+		LineBorder border = new LineBorder(Color.BLACK, 1, true);
 		for(int i = 0; i < 4; i++) {
 			mode[i].setFont(new Font("Serif", Font.BOLD, 28));
-			mode[i].setAlignmentX((JComponent.CENTER_ALIGNMENT));
-			mode[i].setEnabled(false);
-			panel.add(mode[i]);
+
+			mode[i].setForeground(Color.BLACK);
+			mode[i].setHorizontalAlignment(JLabel.CENTER);
+			mode[i].setOpaque(true);
+			mode[i].setBorder(border);
+			panel2.add(mode[i]);
 		}
 
-		setBackground(Color.BLACK);
-
-		JLabel logo = new JLabel("じゃんけんシューティング");
+		setBackground(Global.imageTitle);
+		panel1.setOpaque(false);
+		logo = new JLabel("じゃんけんシューティング");
 		logo.setFont(new Font("Gothic", Font.BOLD, 40));
 		logo.setForeground(Color.MAGENTA);
 		logo.setHorizontalAlignment(JLabel.CENTER);
-		add(logo);
+		panel1.add(logo);
+		label2 = new JLabel("矢印キー↑↓で選択　Zで開始");
+		label2.setFont(new Font("Gothic", Font.PLAIN, 24));
+		label2.setHorizontalAlignment(JLabel.CENTER);
+		panel1.add(label2);
 
-		add(panel);
+		add(panel1);
+		add(panel2);
 		this.start();
 	}
 
@@ -113,6 +125,13 @@ public class Title extends HDrawingFrame{
 		}
 		//常にフレームにキー対象を向ける
 
+		if(colorcnt <= 50) {
+			colorcnt++;
+		}else {
+			colorcnt = 0;
+		}
+		int x = 255 - Math.abs(255 - colorcnt * 10);
+		label2.setForeground(new Color(x, x, x));
 	}
 
 	@Override//使わない
