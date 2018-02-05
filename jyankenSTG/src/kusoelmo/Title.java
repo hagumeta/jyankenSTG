@@ -4,10 +4,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import graphics.Game;
 import graphics.Global;
@@ -17,7 +16,7 @@ import graphics.frames.HDrawingFrame;
 public class Title extends HDrawingFrame{
 	private int cursor;
 	private JLabel logo, label2;
-	private JButton mode[];
+	private JLabel mode[];
 	private JPanel panel1, panel2;
 	private int count = 10;
 	private int colorcnt = 0;
@@ -25,11 +24,11 @@ public class Title extends HDrawingFrame{
 	public Title() {
 		super(1000, 750, 30);
 		cursor = 0;
-		mode = new JButton[4];
-		mode[0] = new JButton("CHALLENGE MODE (EASY)");
-		mode[1] = new JButton("CHALLENGE MODE (NORMAL)");
-		mode[2] = new JButton("CHALLENGE MODE (HARD)");
-		mode[3] = new JButton("ENDLESS MODE");
+		mode = new JLabel[4];
+		mode[0] = new JLabel("CHALLENGE MODE (EASY)");
+		mode[1] = new JLabel("CHALLENGE MODE (NORMAL)");
+		mode[2] = new JLabel("CHALLENGE MODE (HARD)");
+		mode[3] = new JLabel("ENDLESS MODE");
 		panel1 = new JPanel();
 		panel1.setLayout(new GridLayout(2, 1));	
 		panel2 = new JPanel();
@@ -42,9 +41,12 @@ public class Title extends HDrawingFrame{
 			mode[i].setBackground(Color.ORANGE);
 		}
 
+		LineBorder border = new LineBorder(Color.BLACK, 1, true);
 		for(int i = 0; i < 4; i++) {
 			mode[i].setFont(new Font("Serif", Font.BOLD, 28));
-			mode[i].setAlignmentX((JComponent.CENTER_ALIGNMENT));
+			mode[i].setHorizontalAlignment(JLabel.CENTER);
+			mode[i].setOpaque(true);
+			mode[i].setBorder(border);
 			panel2.add(mode[i]);
 		}
 
