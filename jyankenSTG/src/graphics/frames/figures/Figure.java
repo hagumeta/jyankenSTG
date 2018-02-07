@@ -1,7 +1,7 @@
 package graphics.frames.figures;
 import java.awt.Graphics;
 
-import graphics.Global;
+import game.Global;
 import graphics.Vector2;
 import graphics.frames.figures.shapes.Shape;
 /*
