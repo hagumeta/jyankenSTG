@@ -3,7 +3,7 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 
 import game.figs.Player;
 import game.figs.enemies.Enemy;
@@ -13,7 +13,7 @@ import graphics.frames.figures.Figure;
 /*ゲームフレーム*/
 public class GameFrame extends HFigureFrame {
 
-	public BufferedImage background;//背景画像
+	public Image background;//背景画像
 	private boolean backEnable = true;//背景を描画するか
 
 	public GameFrame(){
@@ -42,7 +42,7 @@ public class GameFrame extends HFigureFrame {
 		if(this.backEnable){
 			//ノーマルモード(画像を描画) 結構かくつく
 			Graphics2D g2d = (Graphics2D) g;
-			g2d.drawImage(this.background, null, 0, 0);
+			g2d.drawImage(this.background, 0, 0, null);
 		}
 		else{
 			//パフォーマンスモード(画像を用いない) ぬる

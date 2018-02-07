@@ -30,7 +30,7 @@ public class EnemyBullet extends JyankenBullet {
 				return eb;
 			}
 		}
-		System.out.println("エラー！！　Global. EnemyBullets　在庫切れです！！");
+		System.out.println("★エラー！！　Global. EnemyBullets　在庫切れです！！");
 		return null;
 	}
 
