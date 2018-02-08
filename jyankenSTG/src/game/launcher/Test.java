@@ -9,8 +9,8 @@ import game.GameInitialize;
 import game.Global;
 import game.figs.Player;
 import game.figs.enemies.Enemy;
+import graphics.frames.Figure;
 import graphics.frames.HFigureFrame;
-import graphics.frames.figures.Figure;
 /*デバック用
  * ゲームシーンを直接ぶち込む
  * */

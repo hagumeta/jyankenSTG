@@ -7,8 +7,8 @@ import java.awt.Image;
 
 import game.figs.Player;
 import game.figs.enemies.Enemy;
+import graphics.frames.Figure;
 import graphics.frames.HFigureFrame;
-import graphics.frames.figures.Figure;
 
 /*ゲームフレーム*/
 public class GameFrame extends HFigureFrame {
@@ -20,8 +20,8 @@ public class GameFrame extends HFigureFrame {
 		super(1000, 750, 30);//1秒間に30回更新
 
 		//自身をメインフレームに設定
-		Global.MainFrame = (HFigureFrame)this;
-
+		HFigureFrame.setMainFrame(this);
+		Global.MainFrame = this;
 
 		background = Global.gameBackground;//背景画像をとってくる
 		//敵の用意

@@ -5,8 +5,8 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 
+import graphics.frames.Figure;
 import graphics.frames.HFigureFrame;
-import graphics.frames.figures.Figure;
 import graphics.frames.figures.MovingFigure;
 import graphics.frames.figures.shapes.Cross;
 import graphics.frames.figures.shapes.Ellipse;

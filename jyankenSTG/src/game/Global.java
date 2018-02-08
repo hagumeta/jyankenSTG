@@ -135,13 +135,7 @@ public class Global {
 			//URLから画像を取り込む
 
 			return  (new JFrame()).createImage((ImageProducer) url.getContent());
-			//System.out.println(img.getWidth(null));
-/*			//ImageからBufferedImageにムリヤリ変換(文句は言わせん)
 
-			//System.out.println(img.getHeight());
-
-			return new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-*/
 		}catch(Exception ex){
 			System.out.println("★リソースエラー！！\n"+path+"\nのロードに失敗！");
 			return null;

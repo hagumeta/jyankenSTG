@@ -8,7 +8,7 @@ import game.GameFrame;
 import game.GameInitialize;
 import game.Global;
 import game.figs.JyankenCounter;
-import graphics.frames.figures.Figure;
+import graphics.frames.Figure;
 
 /*ゲームシーン*/
 public class Game extends JPanel{

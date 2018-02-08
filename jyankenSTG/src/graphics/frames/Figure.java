@@ -1,7 +1,6 @@
-package graphics.frames.figures;
+package graphics.frames;
 import java.awt.Graphics;
 
-import game.Global;
 import graphics.Vector2;
 import graphics.frames.figures.shapes.Shape;
 /*
@@ -15,32 +14,60 @@ public class Figure {
 
 
 	//////-----------------*staticメソッド-------------------------*///////
-	/*インスタンスFigureの生成*/
+
+
+	/*インスタンスFigureの生成
+	 * FigureインスタンスをHFigureFrameにアタッチする
+	 * */
 	public static Figure create(Figure fig, Vector2 vec){
 		return Figure.create(fig, vec.x, vec.y);
 	}
+	public static Figure create(HFigureFrame frame, Figure fig, Vector2 vec){
+		return Figure.create(frame, fig, vec.x, vec.y);
+	}
 	public static Figure create(Figure fig, int x, int y){
+		//現在のMainFrameに返す
+		return create(HFigureFrame.MainFrame, fig, x, y);
+	}
+	public static Figure create(HFigureFrame frame, Figure fig, int x, int y){
 		//座標のセット
 		fig.position.x = x;
 		fig.position.y = y;
-		//現在稼働中のFrameに入れる
-		Global.MainFrame.add(fig);
-		//一応figureを返す(役立ちそう)
-		return fig;
+		return create(frame, fig);
+	}
+	public static Figure create(HFigureFrame frame, Figure fig){
+		if(frame != null){
+			//Frameに入れる
+			frame.add(fig);
+			//figureを返す
+			return fig;
+		}else{
+			System.out.println("★エラー！！\n指定したframeがないぞ");
+			return null;
+		}
 	}
 	public static Figure create(Figure fig){
-		//現在稼働中のFrameに入れる
-		Global.MainFrame.add(fig);
-		//figureを返す
-		return fig;
+		//現在のMainFrameに入れる
+		return create(HFigureFrame.MainFrame, fig);
 	}
 
-	/*インスタンスFigureの削除*/
+
+	/*インスタンスFigureの削除
+	 * HFigureFrameからFigureを抹消する(後はガベコレ任せ)
+	 * */
+	public static void destroy(HFigureFrame frame, Figure fig){
+		if(frame != null){
+			//選択したFrameから消す.
+			frame.remove(fig);
+			//存在しない扱い
+			fig.enable = false;
+		}else{
+			System.out.println("★エラー！！\n指定したframeがないぞ");
+		}
+	}
 	public static void destroy(Figure fig){
-		//現在稼働中のFrameから消す.
-		Global.MainFrame.remove(fig);
-		//存在しない扱い
-		fig.enable = false;
+		//現在のメインフレームに返す
+		destroy(HFigureFrame.MainFrame, fig);
 	}
 
 

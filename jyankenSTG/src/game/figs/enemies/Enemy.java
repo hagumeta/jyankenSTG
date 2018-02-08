@@ -7,8 +7,8 @@ import game.figs.GameStart;
 import game.figs.Result;
 import game.figs.bullets.Bullet;
 import graphics.Vector2;
+import graphics.frames.Figure;
 import graphics.frames.figures.FigText;
-import graphics.frames.figures.Figure;
 import graphics.frames.figures.shapes.Circle;
 
 public class Enemy extends Bullet {

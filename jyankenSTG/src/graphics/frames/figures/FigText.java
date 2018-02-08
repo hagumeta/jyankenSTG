@@ -2,6 +2,7 @@ package graphics.frames.figures;
 
 import java.awt.Color;
 
+import graphics.frames.Figure;
 import graphics.frames.figures.shapes.Text;
 
 

@@ -1,7 +1,7 @@
 package game.figs;
 
 import game.figs.shapes.GameStartText;
-import graphics.frames.figures.Figure;
+import graphics.frames.Figure;
 import graphics.frames.figures.MovingFigure;
 import graphics.frames.figures.shapes.Shape;
 

@@ -8,7 +8,7 @@ import game.launcher.Launcher;
 import game.scenes.Game;
 import game.scenes.Title;
 import graphics.Vector2;
-import graphics.frames.figures.Figure;
+import graphics.frames.Figure;
 import graphics.frames.figures.MovingFigure;
 import graphics.frames.figures.shapes.Shape;
 

@@ -5,7 +5,7 @@ import java.awt.Color;
 
 import game.Global;
 import graphics.Vector2;
-import graphics.frames.figures.Figure;
+import graphics.frames.Figure;
 import graphics.frames.figures.MovingFigure;
 import graphics.frames.figures.shapes.Circle;
 

@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import game.Global;
-import graphics.frames.figures.Figure;
+import graphics.frames.Figure;
 import graphics.frames.figures.shapes.Shape;
 import graphics.frames.figures.shapes.Text;
 

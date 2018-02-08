@@ -4,7 +4,6 @@ package graphics.frames;
 import java.awt.Graphics;
 import java.util.Vector;
 
-import graphics.frames.figures.Figure;
 import graphics.frames.figures.Updatable;
 /*
  * HGraphicsFrameを制限した、Figure特化拡張版
@@ -12,6 +11,11 @@ Figureを格納し、自分でFigureたちの描画更新を行う.
 */
 
 public class HFigureFrame extends HDrawingFrame{
+
+	//現在のメインフレーム(Figure.create等でフレーム指定しないとここに入る)
+	protected static HFigureFrame MainFrame;
+
+
 	//今表示されているFigureを格納しておくリスト
 	private Vector<Figure> figures = new Vector<Figure>(0);
 
@@ -23,6 +27,9 @@ public class HFigureFrame extends HDrawingFrame{
 		 * frameRate 1秒間の更新回数
 		 */
 		super(width, height, frameRate);
+
+		//MainFrameに自分を任命
+		setMainFrame(this);
 	}
 
 	//---------------/*以下オーバーライドしてもいいメソッド(任意)*/---------------//
@@ -37,7 +44,19 @@ public class HFigureFrame extends HDrawingFrame{
 	/*背景の描画*/
 	protected void drawBackground(Graphics g){}
 
+
+
 	//---------------/*以下finalメソッド*/---------------//
+
+	/*MainFrameを指定*/
+	final public static void setMainFrame(HFigureFrame f){
+		MainFrame = f;
+	}
+	/*MainFrameを取得*/
+	final public static HFigureFrame getMainFrame(){
+		return MainFrame;
+	}
+
 
 	/*格納されたshapeをそれぞれ描画*/
 	final protected void draw(Graphics g){

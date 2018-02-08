@@ -8,7 +8,7 @@ import game.figs.bullets.JyankenBullet;
 import game.figs.bullets.PlayerBullet;
 import graphics.BoolUtil;
 import graphics.Vector2;
-import graphics.frames.figures.Figure;
+import graphics.frames.Figure;
 import graphics.frames.figures.MovingFigure;
 import graphics.frames.figures.shapes.Circle;
 

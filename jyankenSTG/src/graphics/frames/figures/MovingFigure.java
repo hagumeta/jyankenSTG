@@ -1,6 +1,7 @@
 package graphics.frames.figures;
 
 import graphics.Vector2;
+import graphics.frames.Figure;
 import graphics.frames.figures.shapes.Shape;
 
 /*動く！Figureのクラス 一応線形移動,加速度はデフォで備えてる*/

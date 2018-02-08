@@ -1,7 +1,7 @@
 package game;
 
 import game.figs.bullets.EnemyBullet;
-import graphics.frames.figures.Figure;
+import graphics.frames.Figure;
 
 public class GameInitialize {
 
